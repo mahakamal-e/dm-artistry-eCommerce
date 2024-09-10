@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Landscape",
+        "description": "Landscape paintings.",
+        "image": "categories/landscape.jpg"
+    },
+    {
+        "name": "Portrait",
+        "description": "Portrait paintings.",
+        "image": "categories/landscape.jpg"
+    },
+    {
+        "name": "Nature",
+        "description": "Nature-themed paintings.",
+        "image": "categories/landscape.jpg"
+    },
+    {
+        "name": "Still Life",
+        "description": "Still life paintings.",
+        "image": "categories/landscape.jpg"
+    }
+]

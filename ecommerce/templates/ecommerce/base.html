@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}D&M Artistry{% endblock %}</title>
+    {% load static %}
+
+    <link rel="icon" href="{% static 'images/D&M Artistry.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/cart.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+    
+</head>
+<body>
+    <!-- Header -->
+<header class="top-header-area" id="sticker">
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="site-logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/D&M Artistry.png' %}" alt="D&M Artistry" class="small-logo">
+            </a>
+        </div>
+        
+        <!-- Main Menu Section -->
+        <nav class="main-menu">
+            <!-- Center Menu Items -->
+            <ul class="main-menu-center">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'product_list' %}">Shop</a></li>
+                <li><a href="#">Exhibitions/Events</a></li>
+            </ul>
+
+            <!-- Right Menu Items (Login, Register, Cart, Favorite) -->
+            <ul class="main-menu-right">
+                {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                <li><a href="{% url 'admin:index' %}">Admin Dashboard</a></li>
+            {% endif %}
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+
+                <!-- Favorite Icon with Count -->
+                <li class="favorite-logo">
+                    <a href="#">
+                        <img src="{% static 'images/favorite_icon1.png' %}" alt="Favorite">
+                        <span class="count-badge">
+                            {% if user.is_authenticated %}
+                                {{ user.favorite_items.count|default:0 }}
+                            {% else %}
+                                0
+                            {% endif %}
+                        </span>
+                    </a>
+                </li>
+
+                <!-- Cart Icon with Count -->
+                <li class="cart-logo">
+                    <a href="#">
+                        <img src="{% static 'images/cart_logo3.png' %}" alt="Cart">
+                        <span class="count-badge">
+                            {% if user.is_authenticated %}
+                                {% with cart=user.cart %}
+                                    {% if cart %}
+                                        {{ cart.items.count }}
+                                    {% else %}
+                                        0
+                                    {% endif %}
+                                {% endwith %}
+                            {% else %}
+                                0
+                            {% endif %}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        <!-- Default content if none is provided -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 D&M Artistry. All rights reserved.</p>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

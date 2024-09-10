@@ -34,7 +34,7 @@ def my_login(request):
             if user.is_superuser:
                 return redirect('/admin')
             else:
-                return redirect('profile')
+                return redirect('home')
         else:
             # Add an error message if authentication fails
             messages.error(request, "Invalid username or password. Please try again.")
