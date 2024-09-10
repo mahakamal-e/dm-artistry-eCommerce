@@ -1,0 +1,133 @@
+/* General container styling */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* Styling for form side */
+.form-side {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+/* Styling for input fields */
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styling for error messages */
+.error {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    list-style: none !important;
+    display: block; 
+}
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.form-group {
+    list-style: none; /* Ensure no bullets if this class is applied */
+}
+
+/* Password requirements styling */
+.password-requirements {
+    display: none; /* Initially hidden */
+    margin-top: 10px;
+    font-size: 0.875em;
+}
+
+.requirement {
+    margin: 5px 0;
+}
+
+.requirement.valid::before {
+    content: "✔ ";
+    color: green;
+}
+
+.requirement.invalid::before {
+    content: "✘ ";
+    color: red;
+}
+
+/* Button styling */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Photo side styling */
+.photo-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    height: 70%;
+    background-image: url('/static/images/Henri.Matisse.jpg'); /* Ensure the correct image path */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px 0 0 10px;
+}
+
+/* Social media icons styling */
+.social-icons a img {
+    width: 30px;
+    margin: 0 10px;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.875em;
+}
+
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .photo-side {
+        display: none; /* Hide photo side on small screens */
+    }
+
+    .form-side {
+        width: 100%;
+    }
+}

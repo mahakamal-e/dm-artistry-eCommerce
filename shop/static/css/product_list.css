@@ -1,0 +1,60 @@
+.product-container {
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 0 15px; /* Add padding to container */
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns in a row */
+    gap: 15px; /* Space between items */
+    margin-bottom: 20px; /* Space between rows */
+}
+
+.product-item {
+    background-color: #f9f9f9; /* Background color for items */
+    padding: 15px; /* Padding inside items */
+    border: 1px solid #ddd; /* Border for items */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center text */
+    position: relative; /* Position relative for absolute positioning of buttons */
+}
+
+.product-image img {
+    max-width: 100%; /* Ensure images fit inside the product item */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.quick-review,
+.add-to-cart-button {
+    display: none; /* Initially hide buttons */
+    position: absolute; /* Position buttons absolutely within the product item */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    width: 100%; /* Full width */
+    bottom: 10px; /* Space from the bottom */
+    background-color: yellow; /* Yellow background color */
+    border: none; /* Remove default border */
+    color: black; /* Text color */
+    padding: 10px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.product-item:hover .quick-review {
+    display: block; /* Show quick review button on hover */
+    bottom: 50px; /* Position above add-to-cart button */
+}
+
+.product-item:hover .add-to-cart-button {
+    display: block; /* Show add to cart button on hover */
+}
+
+.add-to-cart-button:hover {
+    background-color: black; /* Black background on hover */
+    color: yellow; /* Yellow text on hover */
+}
+
+.product-details {
+    margin-top: 10px;
+}
