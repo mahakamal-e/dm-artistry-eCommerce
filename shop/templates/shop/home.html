@@ -1,0 +1,74 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}Home - D&M Artistry{% endblock %}
+
+{% block content %}
+<!-- Carousel Section -->
+<section class="carousel">
+    <div class="carousel-container">
+        <!-- Slide 1: September discount -->
+        <div class="slides fade">
+            <img src="{% static 'images/img3.png' %}" alt="Special Offer">
+            <div class="carousel-text">
+                <h1>10% Discount for September!</h1>
+                <a href="{% url 'register' %}" class="shop-now">Sign Up Now</a>
+            </div>
+        </div>
+        <!-- Slide 2: Discover Artworks -->
+        <div class="slides fade">
+            <img src="{% static 'images/img2.png' %}" alt="Art Sale">
+            <div class="carousel-text">
+                <h1>Discover Stunning Artworks!</h1>
+                <a href="{% url 'product_list' %}" class="shop-now">Shop Now</a>
+            </div>
+        </div>
+        <!-- Carousel navigation -->
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+</section>
+
+<!-- Featured Artworks Section -->
+<section class="featured-artworks">
+    <h2>Our Artworks</h2>
+    <div class="product-grid">
+        {% for product in products|slice:":3" %}
+        <div class="single-product-item">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p>Price: ${{ product.price }}</p>
+
+            <a class="buy-now-button" href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+            
+            
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'product_list' %}" class="view-more-btn">View More</a>
+</section>
+
+<!-- Latest Art Events Section -->
+<section class="latest-events">
+    <h2>Latest Art Events</h2>
+    <div class="events-grid">
+        {% for event in events|slice:":3" %}
+        <div class="single-event-item">
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.description }}</p>
+            <p>Date: {{ event.date }}</p>
+            <p>Location: {{ event.location }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="#" class="view-more-btn">See More</a>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+
+

@@ -5,9 +5,8 @@ from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout, login
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib.auth.views import LogoutView
 from django.contrib.auth import logout as auth_logout
-
 
 def register(request):
     if request.method == 'POST':
@@ -34,7 +33,7 @@ def my_login(request):
             if user.is_superuser:
                 return redirect('/admin')
             else:
-                return redirect('home')
+                return redirect('profile')
         else:
             # Add an error message if authentication fails
             messages.error(request, "Invalid username or password. Please try again.")
@@ -50,4 +49,5 @@ def my_login(request):
 def custom_logout(request):
     auth_logout(request)
     return redirect('home')
+
 

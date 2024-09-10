@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    height: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo-side {
+    width: 50%;
+    background:  url('/static/images/Henri.Matisse.jpg') no-repeat center center/cover;
+    position: relative;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-overlay {
+    text-align: center;
+    padding: 20px;
+    background: rgba(30, 30, 30, 0.5); /* Semi-transparent overlay */
+    
+    width: 100%;
+}
+
+.photo-overlay h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.photo-overlay p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons a img {
+    width: 25px;
+    height: 25px;
+}
+
+.form-side {
+    width: 50%;
+    background-color: white;
+    padding: 50px;
+    position: relative; /* Allow positioning of the logo */
+}
+
+/* Add styling for the logo */
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    max-width: 150px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Form styles */
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.create-account {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Footer styling */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 0;
+    color: #777;
+}
+
+footer a {
+    color: #630d57;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* General styles for message container */
+
+/* General message styling */
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Add more styles as needed */
+
+
+/* Specific styles for success messages (if you want to include them) */
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Specific styles for info messages (if you want to include them) */
+.message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Styles for warning messages (if you want to include them) */
+.message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+

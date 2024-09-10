@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - D&M Artistry</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'images/D&M Artistry.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}"> <!-- Updated CSS file -->
+</head>
+<body>
+    <div class="container">
+        <div class="photo-side">
+            <div class="photo-overlay">
+                <h1>Welcome to D&M Artistry!</h1>
+                <p>D&M Artistry is a vibrant e-commerce platform that connects artists and art enthusiasts.</p>
+                <p>We provide a unique space where artists can display their paintings in an attractive and professional manner, allowing customers to explore and purchase original works of art.</p>
+                <p>Immerse yourself in creativity and discover inspiring pieces that speak to you!</p>
+                <div class="social-icons">
+                    <a href="#"><img src="{% static 'images/facebook-icon.png' %}" alt="Facebook"></a>
+                    <a href="#"><img src="{% static 'images/twitter-icon.png' %}" alt="Twitter"></a>
+                    <a href="#"><img src="{% static 'images/pinterest-icon.png' %}" alt="Pinterest"></a>
+                    <a href="#"><img src="{% static 'images/instagram-icon.png' %}" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo and Registration Form -->
+        <div class="form-side">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/D&M Artistry.png' %}" alt="D&M Artistry Logo">
+                </a>
+            </div>
+
+            <h1>Register</h1>
+
+            <!-- Display error messages here -->
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div class="error">
+                            {{ form.username.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="error">
+                            {{ form.email.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password1.label_tag }}
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                        <div class="error">
+                            {{ form.password1.errors }}
+                        </div>
+                    {% endif %}
+                    <div class="password-requirements">
+                        <div id="min-length" class="requirement">Minimum 8 characters</div>
+                        <div id="uppercase" class="requirement">At least one uppercase letter</div>
+                        <div id="lowercase" class="requirement">At least one lowercase letter</div>
+                        <div id="number" class="requirement">At least one number</div>
+                        <div id="special-char" class="requirement">At least one special character</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form.password2.label_tag }}
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <div class="error">
+                            {{ form.password2.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+            </form>
+        </div>
+    </div> <!-- Closing container div properly -->
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2024 D&M Artistry. All rights reserved.</p>
+    </footer>
+
+    <!-- Include JavaScript for password validation -->
+    <script src="{% static 'js/password-validation.js' %}"></script>
+</body>
+</html>
+
+

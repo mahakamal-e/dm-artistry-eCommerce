@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Summary</title>
+</head>
+<body>
+    <h1>Order Summary</h1>
+    <p>Order ID: {{ order.id }}</p>
+    <p>Total Amount: {{ order.total_amount }}</p>
+    <p>Shipping Address: {{ order.shipping_address }}</p>
+    <ul>
+        {% for item in order.items.all %}
+            <li>{{ item.product.name }} - {{ item.quantity }} x {{ item.price }} = {{ item.quantity * item.price }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
