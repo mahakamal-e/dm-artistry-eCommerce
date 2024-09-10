@@ -1,0 +1,52 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<div class="product-container">
+    <div class="row">
+        {% for product in products %}
+            <div class="product-item">
+                <div class="product-image">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                </div>
+                <div class="product-details">
+                    <h3>{{ product.name }}</h3>
+                    <p>Price: ${{ product.price }}</p>
+                    <p>Category: {{ product.category.name }}</p>
+                    <a href="{% url 'product_detail' product.id %}" class="quick-review">Quick Review</a>
+                    <form action="{% url 'add_to_cart' product.id %}" method="post" class="add-to-cart-form">
+                        {% csrf_token %}
+                        <button type="submit" class="add-to-cart-button">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Pagination controls -->
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
+
+
+
+
+
+
