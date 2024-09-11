@@ -6,21 +6,19 @@ from shop.models import Product
 from .models import CartItem
 from .cart import Cart
 
+# For authenticated users only
+@login_required
 def view_cart(request):
-    if request.user.is_authenticated:
-        cart_items = CartItem.objects.filter(user=request.user)
-        total_price = sum(item.product.price * item.quantity for item in cart_items)
-    else:
-        cart = Cart(request)
-        cart_items = cart.get_items()
-        total_price = cart.get_total_price()
+    cart_items = CartItem.objects.filter(user=request.user)
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
     
     return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total_price': total_price})
 
 @login_required
 def add_to_cart(request, product_id):
+    
     product = get_object_or_404(Product, id=product_id)
-
+    
     try:
         with transaction.atomic():
             cart_item, created = CartItem.objects.get_or_create(
