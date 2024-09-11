@@ -9,7 +9,6 @@ class UserProfile(models.Model):
     postcode = models.CharField(max_length=10, blank=True)
     state = models.CharField(max_length=100, blank=True)
     country = models.CharField(max_length=100, blank=True)
-    # Add other fields as needed
 
     def __str__(self):
         return self.user.username

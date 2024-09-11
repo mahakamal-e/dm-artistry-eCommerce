@@ -1,3 +1,7 @@
+"""
+This code ensures that every time a new User is created,
+a corresponding UserProfile is also created
+"""
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
