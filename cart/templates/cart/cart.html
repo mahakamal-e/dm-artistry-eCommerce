@@ -1,66 +1,74 @@
+<!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shopping Cart</title>
     <style>
-        /* Add CSS styles for flex container and items */
         .product-list {
             display: flex;
-            flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
-            justify-content: space-between; /* Space items evenly along the main axis */
-            list-style: none; /* Remove list styles */
+            flex-wrap: wrap;
+            justify-content: space-between;
+            list-style: none;
             padding: 0;
         }
- 
+
         .product-item {
-             
-            flex: 1; /* Grow to fill available space evenly */
-             /* Limit item width to avoid overcrowding */
-            margin: 10px; /* Add spacing between items */
-            border: 1px solid #ccc; /* Add a border for visual separation */
+            flex: 1;
+            margin: 10px;
+            border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
         }
- 
-        /* Style the "Buy Now" button */
-        .buy-now-button {
+
+        .button {
             display: block;
             margin-top: 10px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
             padding: 5px 10px;
             border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .remove-button {
+            background-color: #dc3545;
+        }
+
+        .continue-shopping-button {
+            background-color: #007bff;
         }
     </style>
 </head>
- 
+
 <body>
- 
+
     <h1>Your Shopping Cart</h1>
- 
+
     <div class="product-list">
- 
-    
- 
-    {% for item in cart_items %}
-    <div class="product-item">
-        <p>{{ item.product.name }} ({{ item.quantity }})</p>
-        <p>Price: ${{ item.product.price }}</p>
-        <a href="{% url 'remove_from_cart' item.id %}">Remove</a>
+        {% for item in cart_items %}
+        <div class="product-item">
+            <p>{{ item.product.name }} ({{ item.quantity }})</p>
+            <p>Price: ${{ item.product.price }}</p>
+
+            {% if user.is_authenticated %}
+                <!-- For logged-in users -->
+                <a class="button remove-button" href="{% url 'remove_from_cart' item.id %}">Remove</a>
+            {% else %}
+                <!-- For anonymous users -->
+                <a class="button remove-button" href="{% url 'remove_from_cart_anon' item.product_id %}">Remove</a>
+            {% endif %}
+        </div>
+        {% empty %}
+        <p>Your cart is empty.</p>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p>Your cart is empty.</p>
-    {% endfor %}
- 
-    </div>
- 
+
     <p>Total Price: ${{ total_price }}</p>
- 
-    <a href="{% url 'product_list' %}">Continue Shopping</a>
- 
+
+    <a class="button continue-shopping-button" href="{% url 'product_list' %}">Continue Shopping</a>
+
 </body>
- 
+
 </html>
+

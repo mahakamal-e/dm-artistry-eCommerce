@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Product, Category, CartItem
-
+from .models import Product, Category
+from cart.models import CartItem
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
