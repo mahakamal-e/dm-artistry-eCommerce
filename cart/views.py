@@ -46,3 +46,18 @@ def cart_count(request):
     count = CartItem.objects.filter(user=request.user).count()
     return JsonResponse({'count': count})
 
+def add_to_cart_anon(request, product_id):
+    cart = Cart(request)
+    cart.add(product_id, quantity=1)
+    return redirect('view_cart_anon')
+
+def remove_from_cart_anon(request, product_id):
+    cart = Cart(request)
+    cart.remove(product_id)
+    return redirect('view_cart_anon')
+
+def view_cart_anon(request):
+    cart = Cart(request)
+    cart_items = cart.get_items()  # Ensure this returns a list with 'product_id'
+    total_price = cart.get_total_price()
+    return render(request, 'cart/cart_anon.html', {'cart_items': cart_items, 'total_price': total_price})
