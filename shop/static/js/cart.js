@@ -1,25 +1,23 @@
+// static/js/cart.js
+
 document.addEventListener('DOMContentLoaded', function() {
     function updateCartCount() {
-        let url = '/cart/count/';  // Default URL for authenticated users
-
-        // Optionally, determine if the user is logged in (if you have such data)
-        if (userIsAuthenticated) {
-            url = '/cart/count/';
-        } else {
-            url = '/cart/count-unauthenticated/';
-        }
-
-        fetch(url)
+        fetch('/cart_count/')
             .then(response => response.json())
             .then(data => {
-                document.getElementById('cart-count').textContent = data.count;
-            })
-            .catch(error => console.error('Error fetching cart count:', error));
+                document.querySelector('.count-badge').textContent = data.count || 0;
+            });
     }
 
-    // Initial load
+    // Call this function initially and after adding/removing items
     updateCartCount();
 
-    // Optional: Update cart count periodically (e.g., every minute)
-    setInterval(updateCartCount, 60000);
+    // Example event listener for adding items (you can adapt this to your actual add-to-cart logic)
+    document.querySelectorAll('.add-to-cart-button').forEach(button => {
+        button.addEventListener('click', () => {
+            updateCartCount();
+        });
+    });
 });
+
+
