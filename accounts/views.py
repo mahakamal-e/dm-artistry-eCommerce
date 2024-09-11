@@ -66,35 +66,38 @@ def profile(request):
     """
     Displays and updates user profile information.
     """
+    # Initialize variables
     profile = None
     password_form = None
 
+    # Check if the user has a profile; if not, create one
     if not request.user.is_superuser:
         try:
             profile = request.user.userprofile
         except UserProfile.DoesNotExist:
-            profile = None
+            # Create a new profile if it does not exist
+            profile = UserProfile.objects.create(user=request.user)
 
     if request.method == 'POST':
+        # Handle profile updates
         if 'first_name' in request.POST:
-            request.user.first_name = request.POST['first_name']
-            request.user.last_name = request.POST['last_name']
+            request.user.first_name = request.POST.get('first_name', '')
+            request.user.last_name = request.POST.get('last_name', '')
+            request.user.save()
+            messages.success(request, 'Profile information updated successfully!')
 
             if profile:
-                profile.phone_number = request.POST['phone_number']
-                profile.address_line1 = request.POST['address_line1']
-                profile.address_line2 = request.POST['address_line2']
-                profile.postcode = request.POST['postcode']
-                profile.state = request.POST['state']
-                profile.country = request.POST['country']
+                profile.phone_number = request.POST.get('phone_number', '')
+                profile.address_line1 = request.POST.get('address_line1', '')
+                profile.address_line2 = request.POST.get('address_line2', '')
+                profile.postcode = request.POST.get('postcode', '')
+                profile.state = request.POST.get('state', '')
+                profile.country = request.POST.get('country', '')
                 profile.save()
 
-            request.user.save()
-            messages.success(request, 'Profile updated successfully!')
-
+        # Handle password change
         if 'old_password' in request.POST:
             password_form = PasswordChangeForm(request.user, request.POST)
-
             if password_form.is_valid():
                 try:
                     user = password_form.save()
@@ -104,7 +107,7 @@ def profile(request):
                 except Exception as e:
                     messages.error(request, f"Error: {str(e)}")
             else:
-                messages.error(request, 'Please correct the error below.')
+                messages.error(request, 'Please correct the errors below.')
 
     if not password_form:
         password_form = PasswordChangeForm(request.user)
@@ -115,4 +118,3 @@ def profile(request):
         'password_form': password_form
     }
     return render(request, 'accounts/profile.html', context)
-
