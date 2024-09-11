@@ -1,6 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
+from .models import UserProfile
+
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+    can_delete = False
+    verbose_name_plural = 'Profile'
+    fields = ['phone_number', 'address_line1', 'address_line2', 'postcode', 'state', 'country']
+    extra = 0
 
 class CustomUserAdmin(UserAdmin):
     # Define fields to display in the admin interface
@@ -25,3 +33,9 @@ class CustomUserAdmin(UserAdmin):
 # Register the user model with the customized admin interface
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
+
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'phone_number', 'address_line1', 'postcode', 'state', 'country')
+    search_fields = ('user__username', 'user__email', 'phone_number')
+    list_filter = ('state', 'country')
