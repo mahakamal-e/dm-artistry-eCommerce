@@ -21,7 +21,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
-    'cart,'
+    'cart',
     'accounts',
     'shop',
     'django.contrib.admin',
@@ -41,6 +41,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 ROOT_URLCONF = 'DMArtistry.urls'
 
@@ -51,6 +52,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'cart.context_processors.cart_count',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
