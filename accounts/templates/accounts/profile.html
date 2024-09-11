@@ -53,10 +53,10 @@
                 <label for="country">Country</label>
                 <input type="text" name="country" id="country" placeholder="Enter country" value="{{ profile.country }}">
             </div>
-            <!-- Save profile button and messages -->
+            
             <div class="form-group">
                 <button type="submit" class="btn">Save Profile</button>
-                <!-- Display messages beside the button -->
+                
                 {% if messages %}
                     <div class="messages">
                         {% for message in messages %}
@@ -69,10 +69,10 @@
             </div>
         </form>
         <br>
-        <!-- Change Password Button -->
+       
         <button onclick="togglePasswordForm()" class="btn">Change Password</button>
 
-        <!-- Password change form (hidden by default) -->
+        
         <form method="post" id="passwordChangeForm" class="password-change-form" style="display: none;">
             {% csrf_token %}
             <div class="form-group">
@@ -93,14 +93,5 @@
 </div>
 
 <!-- JavaScript to toggle the visibility of the password change form -->
-<script>
-    function togglePasswordForm() {
-        var form = document.getElementById('passwordChangeForm');
-        if (form.style.display === "none") {
-            form.style.display = "block";
-        } else {
-            form.style.display = "none";
-        }
-    }
-</script>
+<script src="{% static 'js/password-toggle.js' %}" defer></script>
 {% endblock %}
