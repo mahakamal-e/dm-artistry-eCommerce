@@ -41,10 +41,13 @@ def remove_from_cart(request, item_id):
     cart_item.delete()
     return redirect('view_cart')
 
-@login_required
+
 def cart_count(request):
-    count = CartItem.objects.filter(user=request.user).count()
-    return JsonResponse({'count': count})
+    if request.user.is_authenticated:
+        # Get total count of items (including quantities) for authenticated users
+        count = CartItem.objects.filter(user=request.user).aggregate(total=Sum('quantity'))['total'] or 0
+  
+    return {'item_total': count}
 
 def add_to_cart_anon(request, product_id):
     cart = Cart(request)
