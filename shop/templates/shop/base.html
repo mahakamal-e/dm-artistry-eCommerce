@@ -64,27 +64,17 @@
                 </li>
 
                 <!-- Cart Icon with Count -->
-                <li class="cart-logo">
-                    <a href="#">
-                        <img src="{% static 'images/cart_logo3.png' %}" alt="Cart">
-                        <span class="count-badge">
-                            {% if user.is_authenticated %}
-                                {% with cart=user.cart %}
-                                    {% if cart %}
-                                        {{ cart.items.count }}
-                                    {% else %}
-                                        0
-                                    {% endif %}
-                                {% endwith %}
-                            {% else %}
-                                0
-                            {% endif %}
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+               <li class="cart-logo">
+                        <a href="{% url 'view_cart' %}">
+                            <img src="{% static 'images/cart_logo3.png' %}" alt="Cart">
+                            <span class="count-badge">
+                                {{ item_total|default:0 }}
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 </header>
 
     <!-- Main Content -->
