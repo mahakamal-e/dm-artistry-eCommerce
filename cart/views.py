@@ -5,6 +5,7 @@ from django.db import transaction, IntegrityError
 from shop.models import Product
 from .models import CartItem
 from .cart import Cart
+from django.db.models import Sum
 
 # For authenticated users only
 @login_required
@@ -41,7 +42,7 @@ def remove_from_cart(request, item_id):
     cart_item.delete()
     return redirect('view_cart')
 
-
+"""
 def cart_count(request):
     if request.user.is_authenticated:
         # Get total count of items (including quantities) for authenticated users
@@ -51,6 +52,7 @@ def cart_count(request):
         cart = Cart(request)
         count = cart.get_item_count()  # Use get_item_count to get total items
     return {'item_total': count}
+    """
 
 def add_to_cart_anon(request, product_id):
     cart = Cart(request)
