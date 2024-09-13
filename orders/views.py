@@ -1,21 +1,48 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Order, OrderItem
-from shop.models import Product  # Adjust import based on your project structure
+from django.db import transaction
+from decimal import Decimal
+from .models import Order, OrderItem, PaymentMethod
+from shop.models import Product
+from cart.models import CartItem
+from accounts.models import UserProfile
 
 @login_required
 def checkout(request):
     if request.method == 'POST':
         # Collect shipping information from the POST request
-        shipping_address = request.POST.get('shipping_address')
-        # You can also collect other details like payment information
+        phone_number = request.POST.get('phone_number', '')
+        address_line1 = request.POST.get('address_line1', '')
+        address_line2 = request.POST.get('address_line2', '')
+        postcode = request.POST.get('postcode', '')
+        state = request.POST.get('state', '')
+        country = request.POST.get('country', '')
+        payment_method = request.POST.get('payment_method')  # cash or credit_card
 
-        # Create a new order
-        order = Order(user=request.user, shipping_address=shipping_address)
-        order.save()
+        # Create the order
+        order = Order(
+            user=request.user,
+            phone_number=phone_number,
+            address_line1=address_line1,
+            address_line2=address_line2,
+            postcode=postcode,
+            state=state,
+            country=country,
+            payment_method=payment_method,
+            first_name=request.user.first_name or '',
+            last_name=request.user.last_name or '',
+            email=request.user.email or ''
+        )
+        order.save()  # Save the order to generate and save the order number
+
+        # Handle payment method
+        if payment_method == 'credit_card':
+            pass
+        elif payment_method == 'cash':
+            pass
 
         # Add items from the cart to the order
-        # Example: assuming cart_items is a list of items in the cart
+        cart_items = CartItem.objects.filter(user=request.user)
         for item in cart_items:
             OrderItem.objects.create(
                 order=order,
@@ -24,9 +51,27 @@ def checkout(request):
                 price=item.product.price
             )
 
-        # Redirect to order confirmation page
-        return redirect('order_confirmation', order_id=order.id)
+        # Clear the cart
+        cart_items.delete()
 
-    # Display the checkout page with the current cart items
-    cart_items = get_cart_items(request)  # Implement this function to get cart items
-    return render(request, 'orders/checkout.html', {'cart_items': cart_items})
+    # If not a POST request, render the checkout page
+    cart_items = CartItem.objects.filter(user=request.user)
+    profile = UserProfile.objects.filter(user=request.user).first()
+    payment_methods = PaymentMethod.objects.all()
+
+    subtotal = sum(Decimal(item.product.price) * item.quantity for item in cart_items)
+    total_price = subtotal  # No shipping cost added
+
+    return render(request, 'orders/checkout.html', {
+        'cart_items': cart_items,
+        'profile': profile,
+        'payment_methods': payment_methods,
+        'subtotal': subtotal,
+        'total_price': total_price
+    })
+
+    
+
+
+
+
