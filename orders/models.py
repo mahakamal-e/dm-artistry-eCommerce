@@ -29,8 +29,9 @@ class Order(models.Model):
         return str(uuid.uuid4().hex[:8].upper())
 
     def __str__(self):
-        return f"Order {self.order_number} by {self.user.username if self.user else 'Guest'}"
-
+        order_info = f"Order {self.order_number}"
+        user_info = f"by {self.user.username if self.user else 'Customer'}"
+        return f"{order_info} {user_info}"
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
