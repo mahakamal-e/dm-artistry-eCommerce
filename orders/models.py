@@ -6,7 +6,8 @@ from django.utils import timezone
 
 class Order(models.Model):
     """Represents an order placed by a user or a customer"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,
+                             null=True)
     phone_number = models.CharField(max_length=20)
     address_line1 = models.CharField(max_length=255)
     address_line2 = models.CharField(max_length=255, blank=True, null=True)
@@ -19,6 +20,9 @@ class Order(models.Model):
     order_number = models.CharField(max_length=10, blank=True,
                                     unique=True, editable=False)
     created_at = models.DateTimeField(default=timezone.now)
+    payment_method = models.ForeignKey('PaymentMethod',
+                                       on_delete=models.SET_NULL,
+                                       null=True, blank=True)
     
     def save(self, *args, **kwargs):
         """
@@ -51,3 +55,12 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name} (x{self.quantity})"
+    
+    
+class PaymentMethod(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
