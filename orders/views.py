@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.db import transaction
 from decimal import Decimal
 from .models import Order, OrderItem, PaymentMethod
-from shop.models import Product
 from cart.models import CartItem
 from accounts.models import UserProfile
 
@@ -54,6 +52,9 @@ def checkout(request):
         # Clear the cart
         cart_items.delete()
 
+        # Redirect to an order confirmation page
+        return redirect('order_confirmation', order_number=order.order_number)
+
     # If not a POST request, render the checkout page
     cart_items = CartItem.objects.filter(user=request.user)
     profile = UserProfile.objects.filter(user=request.user).first()
@@ -71,7 +72,11 @@ def checkout(request):
     })
 
     
-
+def order_confirmation(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+    return render(request, 'orders/order_confirmation.html', {
+        'order': order
+    })
 
 
 
