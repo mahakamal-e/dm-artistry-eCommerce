@@ -1,74 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "shop/base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-    <style>
-        .product-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            list-style: none;
-            padding: 0;
-        }
+{% block content %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{% static 'css/cart_view.css' %}">
 
-        .product-item {
-            flex: 1;
-            margin: 10px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
 
-        .button {
-            display: block;
-            margin-top: 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            color: #fff;
-            text-decoration: none;
-        }
 
-        .remove-button {
-            background-color: #dc3545;
-        }
-
-        .continue-shopping-button {
-            background-color: #007bff;
-        }
-    </style>
-</head>
-
-<body>
-
-    <h1>Your Shopping Cart</h1>
-
-    <div class="product-list">
-        {% for item in cart_items %}
-        <div class="product-item">
-            <p>{{ item.product.name }} ({{ item.quantity }})</p>
-            <p>Price: ${{ item.product.price }}</p>
-
-            {% if user.is_authenticated %}
-                <!-- For logged-in users -->
-                <a class="button remove-button" href="{% url 'remove_from_cart' item.id %}">Remove</a>
-            {% else %}
-                <!-- For anonymous users -->
-                <a class="button remove-button" href="{% url 'remove_from_cart_anon' item.product_id %}">Remove</a>
-            {% endif %}
+<div class="content-wrapper">
+  <div class="content-container">
+    <div class="split left">
+      <div class="cart-container">
+        <h4 class="mb-4">Cart</h4>
+        {% if user.is_authenticated %}
+        <!-- Authenticated User View -->
+        <div class="product-list">
+            {% for item in cart_items %}
+            <div class="d-flex align-items-center mb-4">
+                <div class="cart-image" style="width: 80px;">
+                    <img src="{{ item.product.image.url }}" class="img-fluid" alt="{{ item.product.name }}">
+                </div>
+                <div class="ms-3">
+                    <p class="mb-1"><strong>{{ item.product.name|truncatewords:6 }}</strong></p>
+                    <p class="text-muted mb-0">Artist: {{ item.product.artist_name }}</p>
+                    <p class="text-muted mb-0">Shipping: Included</p>
+                    <p class="text-muted mb-0">Quantity: {{ item.quantity }}</p> <!-- Display quantity -->
+                    <p class="text-muted mb-0">Artwork Total: ${{ item.product.price }}</p>
+                </div>
+                <div class="ms-auto">
+                    <a class="btn btn-link text-muted" href="{% url 'remove_from_cart' item.product_id %}">&times;</a>
+                </div>
+            </div>
+            {% empty %}
+            <p>Your cart is empty.</p>
+            {% endfor %}
         </div>
-        {% empty %}
-        <p>Your cart is empty.</p>
-        {% endfor %}
+    {% else %}
+        <!-- Unauthenticated User View -->
+        <div class="product-list">
+            {% for item in cart_items %}
+            <div class="d-flex align-items-center mb-4">
+                <div class="cart-image" style="width: 80px;">
+                    <img src="{{ item.image_url }}" class="img-fluid" alt="{{ item.name }}">
+                </div>
+                <div class="ms-3">
+                    <p class="mb-1"><strong>{{ item.name|truncatewords:6 }}</strong></p>
+                    <p class="text-muted mb-0">Shipping: Included</p>
+                    <p class="text-muted mb-0">Quantity: {{ item.quantity }}</p> <!-- Display quantity -->
+                    <p class="text-muted mb-0">Artwork Total: ${{ item.price }}</p>
+                </div>
+                <div class="ms-auto">
+                    <a class="btn btn-link text-muted" href="{% url 'remove_from_cart_anon' item.product_id %}">&times;</a>
+                </div>
+            </div>
+            {% empty %}
+            <p>Your cart is empty.</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <!-- Promo / Gift Card Section -->
+        <div class="mt-4">
+          <h5>Apply Promo OR Gift Card Code</h5>
+          <div class="row">
+            <!-- Promo Code Section -->
+            <div class="col-md-6">
+              <div class="input-group mb-2">
+                <input type="text" class="form-control" placeholder="Enter Promo Code">
+                <button class="btn btn-outline-primary">Apply</button>
+              </div>
+            </div>
+            <!-- Gift Card Code Section -->
+            <div class="col-md-6">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter Gift Card Code">
+                <button class="btn btn-outline-primary">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Continue Shopping Link -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+          <a class="btn btn-outline-primary" href="{% url 'product_list' %}">Continue Shopping</a>
+        </div>
+      </div>
     </div>
 
-    <p>Total Price: ${{ total_price }}</p>
+    <div class="split right">
+      <div class="checkout-container">
+        <div class="card">
+          <div class="card-header bg-primary text-white text-center h5">
+            Estimated Total
+          </div>
+          <div class="card-body text-center">
+            <h3 class="mb-4">${{ total_price }}</h3>
+            <a href="#" class="btn btn-lg btn-primary w-100">Checkout</a>
+          </div>
 
-    <a class="button continue-shopping-button" href="{% url 'product_list' %}">Continue Shopping</a>
+          <div class="px-4 mt-4">
+            <p class="mb-2"><i class="bi bi-shield-fill-check me-2"></i>Satisfaction Guaranteed</p>
+            <p class="mb-2"><i class="bi bi-lock-fill me-2"></i>Safe & Secure Shopping</p>
+            <p><i class="bi bi-people-fill me-2"></i>Support An Artist With Every Purchase</p>
+          </div>
+        </div>
 
-</body>
+        <!-- Help Section -->
+        <div class="mt-4 text-center">
+          <h6>Need More Help?</h6>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-outline-secondary">Contact Customer Support</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-</html>
+<!-- Load Bootstrap JS (4.5.2) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Then load Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
 
