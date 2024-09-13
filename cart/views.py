@@ -42,17 +42,7 @@ def remove_from_cart(request, item_id):
     cart_item.delete()
     return redirect('view_cart')
 
-"""
-def cart_count(request):
-    if request.user.is_authenticated:
-        # Get total count of items (including quantities) for authenticated users
-        count = CartItem.objects.filter(user=request.user).aggregate(total=Sum('quantity'))['total'] or 0
-    else:
-        # For anonymous users, get item count from session
-        cart = Cart(request)
-        count = cart.get_item_count()  # Use get_item_count to get total items
-    return {'item_total': count}
-    """
+
 
 def add_to_cart_anon(request, product_id):
     cart = Cart(request)
@@ -68,4 +58,4 @@ def view_cart_anon(request):
     cart = Cart(request)
     cart_items = cart.get_items()  # Ensure this returns a list with 'product_id'
     total_price = cart.get_total_price()
-    return render(request, 'cart/cart_anon.html', {'cart_items': cart_items, 'total_price': total_price})
+    return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total_price': total_price})

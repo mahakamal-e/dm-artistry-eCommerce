@@ -18,9 +18,12 @@ class Cart:
                 'product_id': product.id,
                 'name': product.name,
                 'price': str(product.price),
-                'quantity': quantity
-            }
+                'quantity': quantity,
+                'image_url': product.image.url  # Add image URL
+                }
+    
         self.save()
+
 
     def remove(self, product_id):
         if str(product_id) in self.cart:
@@ -33,10 +36,11 @@ class Cart:
                 'product_id': item_data['product_id'],
                 'name': item_data['name'],
                 'price': item_data['price'],
-                'quantity': item_data['quantity']
+                'quantity': item_data['quantity'],
+                'image_url': item_data.get('image_url', '')  # Include image URL
             }
             for item_data in self.cart.values()
-        ]
+            ]
 
     def get_total_price(self):
         return sum(float(item['price']) * item['quantity'] for item in self.get_items())

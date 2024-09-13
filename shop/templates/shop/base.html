@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+    
     <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'js/cart.js' %}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
-
+    
     
 </head>
 <body>
@@ -65,7 +66,11 @@
 
                 <!-- Cart Icon with Count -->
                <li class="cart-logo">
+                {% if user.is_authenticated %}
                         <a href="{% url 'view_cart' %}">
+                            {% else %}
+                            <a href="{% url 'view_cart_anon' %}"> 
+                                {% endif %}
                             <img src="{% static 'images/cart_logo3.png' %}" alt="Cart">
                             <span class="count-badge">
                                 {{ item_total|default:0 }}

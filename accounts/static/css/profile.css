@@ -75,7 +75,7 @@
 }
 
 .btn {
-    background-color: #5e35b1;
+    background-color:  #007bff;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -85,7 +85,7 @@
 }
 
 .btn:hover {
-    background-color: #4527a0;
+    background-color: #007bff;
 }
 
 .messages {
@@ -99,4 +99,3 @@
 .message.error {
     color: red;
 }
-
