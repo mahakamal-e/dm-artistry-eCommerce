@@ -21,6 +21,7 @@ class Cart:
                 'quantity': quantity,
                 'image_url': product.image.url  # Add image URL
                 }
+    
         self.save()
 
 
