@@ -53,21 +53,23 @@ def checkout(request):
         cart_items.delete()
 
         # Redirect to an order confirmation page
-        return redirect('order_confirmation', order_number=order.order_number)
+        return redirect('order_confirmation',
+                        order_number=order.order_number)
 
     # If not a POST request, render the checkout page
     cart_items = CartItem.objects.filter(user=request.user)
     profile = UserProfile.objects.filter(user=request.user).first()
     payment_methods = PaymentMethod.objects.all()
-
+    shipping_cost = Decimal('0.00')
     subtotal = sum(Decimal(item.product.price) * item.quantity for item in cart_items)
-    total_price = subtotal  # No shipping cost added
+    total_price = subtotal + shipping_cost # No shipping cost added
 
     return render(request, 'orders/checkout.html', {
         'cart_items': cart_items,
         'profile': profile,
         'payment_methods': payment_methods,
         'subtotal': subtotal,
+        'shipping_cost': shipping_cost,
         'total_price': total_price
     })
 
