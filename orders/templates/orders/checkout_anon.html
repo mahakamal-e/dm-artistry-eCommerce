@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout (Anonymous)</title>
+</head>
+<body>
+
+<h1>Order Summary</h1>
+
+<ul>
+    {% for item in cart_items %}
+        <li>{{ item.name }} x {{ item.quantity }}</li>
+        <p>${{ item.price }} each</p>
+    {% endfor %}
+</ul>
+
+<hr>
+
+<p><strong>Subtotal:</strong> ${{ subtotal }}</p>
+<p><strong>Shipping:</strong> ${{ shipping_cost }}</p>
+<p><strong>Total:</strong> ${{ total_price }}</p>
+
+</body>
+</html>
