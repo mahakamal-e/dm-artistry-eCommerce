@@ -9,6 +9,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import update_session_auth_hash
 from .forms import CreateUserForm, PasswordChangeForm
 from accounts.models import UserProfile
+from orders.models import Order
 
 
 def register(request):
@@ -111,10 +112,13 @@ def profile(request):
 
     if not password_form:
         password_form = PasswordChangeForm(request.user)
-
+        
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    
     context = {
         'user': request.user,
         'profile': profile,
-        'password_form': password_form
+        'password_form': password_form,
+        'orders': orders
     }
     return render(request, 'accounts/profile.html', context)

@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    'orders',
     'cart',
     'accounts',
     'shop',

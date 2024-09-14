@@ -1,101 +1,203 @@
-/* Profile Page Styles */
+/* General styles */
 .profile-container {
     display: flex;
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
+    margin: 20px;
 }
 
 .profile-sidebar {
-    width: 30%;
-    text-align: center;
+    flex: 1;
+    background-color: #f9f9f9;
     padding: 20px;
-    background-color: #fff;
-    border-right: 1px solid #e0e0e0;
-    border-radius: 10px 0 0 10px;
+    border-right: 1px solid #ddd;
+    text-align: center;
 }
 
-.profile-img {
-    width: 150px;
-    height: 150px;
+.profile-sidebar .profile-img {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
 }
 
-.profile-name {
-    font-weight: bold;
+.profile-sidebar .profile-name {
     font-size: 1.5em;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
-.profile-email {
-    color: #888;
-    font-size: 1.1em;
+.profile-sidebar .profile-email {
+    color: #555;
 }
 
-.profile-form {
-    width: 70%;
+.profile-content {
+    flex: 3;
     padding: 20px;
 }
 
-.profile-settings-form h2 {
-    font-size: 1.8em;
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
     margin-bottom: 20px;
 }
 
-.form-group {
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #f1f1f1;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+.tab-button.active {
+    background: #fff;
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.profile-settings-form .form-group {
     margin-bottom: 15px;
 }
 
-.form-group label {
-    font-weight: bold;
+.profile-settings-form .form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.profile-settings-form .form-column {
+    flex: 1;
+}
+
+.profile-settings-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.profile-settings-form label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
-.form-group input[type="text"], 
-.form-group input[type="email"], 
-.form-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.form-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-column {
-    width: 48%;
-}
-
-.btn {
-    background-color:  #007bff;
+.profile-settings-form .btn {
+    background: #007bff;
     color: white;
-    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1em;
+    transition: background 0.3s ease;
 }
 
-.btn:hover {
-    background-color: #007bff;
+.profile-settings-form .btn:hover {
+    background: #0056b3;
+}
+
+.password-change-form {
+    margin-top: 20px;
+}
+
+.password-change-form .form-group {
+    margin-bottom: 15px;
+}
+
+.password-change-form input {
+    width: 100%;
 }
 
 .messages {
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 5px;
 }
 
 .message.success {
-    color: green;
+    background-color: #d4edda;
+    color: #155724;
 }
 
 .message.error {
-    color: red;
+    background-color: #f8d7da;
+    color: #721c24;
 }
+
+.order-history ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-history li {
+    margin-bottom: 10px;
+}
+
+.order-history a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.order-history a:hover {
+    text-decoration: underline;
+}
+
+/* Button styles */
+.btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+
+/* Adjust password form fields to match profile settings form */
+.password-change-form .form-group {
+    margin-bottom: 15px;
+}
+
+.password-change-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Ensure the button is consistent with other buttons */
+.password-change-form .btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+.password-change-form .btn:hover {
+    background: #0056b3;
+}
+
