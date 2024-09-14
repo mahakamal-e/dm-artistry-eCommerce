@@ -11,6 +11,8 @@ from django.db.models import Sum
 @login_required
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
+    if not cart_items.exists():
+        return redirect('empty_cart')
     total_price = sum(item.product.price * item.quantity for item in cart_items)
     
     return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total_price': total_price})
@@ -59,3 +61,8 @@ def view_cart_anon(request):
     cart_items = cart.get_items()  # Ensure this returns a list with 'product_id'
     total_price = cart.get_total_price()
     return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total_price': total_price})
+
+
+def empty_cart_view(request):
+    return render(request, 'cart/empty_cart.html')
+
