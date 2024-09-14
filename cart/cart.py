@@ -51,3 +51,8 @@ class Cart:
     def save(self):
         self.session['cart'] = self.cart
         self.session.modified = True
+
+    def clear(self):
+        # Clear the cart items from the session
+        self.session.pop('cart_items', None)
+        self.session.modified = True
