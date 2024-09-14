@@ -106,7 +106,7 @@ def checkout_anonymous(request):
                 price=item['price']
             )
 
-        cart.clear()
+        request.session.pop('cart_items', [])
 
         return redirect('order_confirmation', order_number=order.order_number)
    
