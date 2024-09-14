@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
+    path('checkout_anonymous/', views.checkout_anonymous, name='checkout_anonymous'),
     path('order_confirmation/<str:order_number>/', views.order_confirmation, name='order_confirmation'),
 ]
