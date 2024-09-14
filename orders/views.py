@@ -4,6 +4,8 @@ from decimal import Decimal
 from .models import Order, OrderItem, PaymentMethod
 from cart.models import CartItem
 from accounts.models import UserProfile
+from cart.cart import Cart
+
 
 @login_required
 def checkout(request):
@@ -53,20 +55,70 @@ def checkout(request):
         cart_items.delete()
 
         # Redirect to an order confirmation page
-        return redirect('order_confirmation',
-                        order_number=order.order_number)
+        return redirect('order_confirmation', order_number=order.order_number)
 
-    # If not a POST request, render the checkout page
+    # If not a POST request, render the checkout page for authenticated users
     cart_items = CartItem.objects.filter(user=request.user)
     profile = UserProfile.objects.filter(user=request.user).first()
     payment_methods = PaymentMethod.objects.all()
     shipping_cost = Decimal('0.00')
     subtotal = sum(Decimal(item.product.price) * item.quantity for item in cart_items)
-    total_price = subtotal + shipping_cost # No shipping cost added
+    total_price = subtotal + shipping_cost  # No shipping cost added
 
     return render(request, 'orders/checkout.html', {
         'cart_items': cart_items,
         'profile': profile,
+        'payment_methods': payment_methods,
+        'subtotal': subtotal,
+        'shipping_cost': shipping_cost,
+        'total_price': total_price
+    })
+
+
+def checkout_anonymous(request):
+    if request.method == 'POST':
+        phone_number = request.POST.get('phone_number', '')
+        address_line1 = request.POST.get('address_line1', '')
+        address_line2 = request.POST.get('address_line2', '')
+        postcode = request.POST.get('postcode', '')
+        state = request.POST.get('state', '')
+        country = request.POST.get('country', '')
+        payment_method = request.POST.get('payment_method')
+
+        order = Order(
+            phone_number=phone_number,
+            address_line1=address_line1,
+            address_line2=address_line2,
+            postcode=postcode,
+            state=state,
+            country=country,
+            payment_method=payment_method,
+        )
+        
+        order.save()
+        cart = Cart(request)
+        cart_items = cart.get_items()
+        for item in cart_items:
+            OrderItem.objects.create(
+                order=order,
+                product_id=item['product_id'],
+                quantity=item['quantity'],
+                price=item['price']
+            )
+
+        cart.clear()
+
+        return redirect('order_confirmation', order_number=order.order_number)
+   
+    cart = Cart(request)
+    cart_items = cart.get_items()
+    payment_methods = PaymentMethod.objects.all()
+    shipping_cost = Decimal('0.00')
+    subtotal = sum(Decimal(item['price']) * item['quantity'] for item in cart_items)
+    total_price = subtotal + shipping_cost
+
+    return render(request, 'orders/checkout_anon.html', {
+        'cart_items': cart_items,
         'payment_methods': payment_methods,
         'subtotal': subtotal,
         'shipping_cost': shipping_cost,
@@ -79,6 +131,4 @@ def order_confirmation(request, order_number):
     return render(request, 'orders/order_confirmation.html', {
         'order': order
     })
-
-
-
+    
