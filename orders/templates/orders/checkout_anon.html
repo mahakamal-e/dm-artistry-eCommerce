@@ -1,26 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout (Anonymous)</title>
-</head>
-<body>
+{% extends "shop/base.html" %}
+{% load static %}
 
-<h1>Order Summary</h1>
+{% block content %}
+<title>{% block title %}Checkout - D&M Artistry{% endblock %}</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{% static 'css/checkout_view.css' %}">
 
-<ul>
-    {% for item in cart_items %}
-        <li>{{ item.name }} x {{ item.quantity }}</li>
-        <p>${{ item.price }} each</p>
-    {% endfor %}
-</ul>
+<div class="content-wrapper">
+  <div class="content-container">
+    <div class="split left">
+      <div class="shipping-container">
+        <h4 class="mb-4">Shipping Address</h4>
+        <form method="POST" action="{% url 'checkout_anonymous' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="first_name">First Name*</label>
+            <input type="text" id="first_name" class="form-control" name="first_name" value="" required>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Last Name*</label>
+            <input type="text" id="last_name" class="form-control" name="last_name" value="" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email*</label>
+            <input type="email" id="email" class="form-control" name="email" value="" required>
+          </div>
+          <div class="form-group">
+            <label for="address_line1">Address Line 1*</label>
+            <input type="text" id="address_line1" class="form-control" name="address_line1" value="" required>
+          </div>
+          <div class="form-group">
+            <label for="address_line2">Address Line 2 (optional)</label>
+            <input type="text" id="address_line2" class="form-control" name="address_line2" value="">
+          </div>
+          <div class="form-group">
+            <label for="country">Country*</label>
+            <input type="text" id="country" class="form-control" name="country" value="" required>
+          </div>
+          <div class="form-group">
+            <label for="state">State/Region*</label>
+            <input type="text" id="state" class="form-control" name="state" value="" required>
+          </div>
+          <div class="form-group">
+            <label for="postcode">Postal Code*</label>
+            <input type="text" id="postcode" class="form-control" name="postcode" value="" required>
+          </div>
+          <div class="form-group">
+            <label for="phone_number">Phone Number*</label>
+            <input type="text" id="phone_number" class="form-control" name="phone_number" value="" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 mt-3">Place Order</button>
+        </form>
+      </div>
+    </div>
 
-<hr>
+    <div class="split right">
+      <div class="order-summary-container">
+        <div class="card">
+          <div class="card-header bg-primary text-white text-center h5">
+            Order Summary
+          </div>
+          <div class="card-body">
+            <div class="product-list">
+              {% for item in cart_items %}
+              <div class="d-flex align-items-center mb-4">
+                <div class="cart-image" style="width: 80px;">
+                  <img src="{{ item.product.image_url }}" class="img-fluid" alt="{{ item.product.name }}">
+                </div>
+                <div class="ms-3">
+                  <p class="mb-1"><strong>{{ item.name }} x {{ item.quantity }}</strong> </p>
+                  
+                  <p class="text-muted mb-0">${{ item.price|floatformat:2 }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <ul class="list-group mb-4">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong>Subtotal</strong>
+                <strong>${{ subtotal|floatformat:2 }}</strong>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong>Shipping</strong>
+                <strong>${{ shipping_cost|floatformat:2 }}</strong>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong>Total</strong>
+                <strong>${{ total_price|floatformat:2 }}</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-<p><strong>Subtotal:</strong> ${{ subtotal }}</p>
-<p><strong>Shipping:</strong> ${{ shipping_cost }}</p>
-<p><strong>Total:</strong> ${{ total_price }}</p>
+        <div class="px-4 mt-4">
+          <p class="mb-2"><i class="bi bi-shield-fill-check me-2"></i>Satisfaction Guaranteed</p>
+          <p class="mb-2"><i class="bi bi-lock-fill me-2"></i>Safe & Secure Shopping</p>
+          <p><i class="bi bi-people-fill me-2"></i>Support An Artist With Every Purchase</p>
+          
+          <div class="mt-4">
+            <h6>Pay with</h6>
+            <!-- Cash on Delivery Option -->
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="payment_method" id="cash" value="cash" checked>
+              <label class="form-check-label" for="cash">
+                Cash on delivery
+              </label>
+            </div>
+            <!-- Credit Card Option -->
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="payment_method" id="credit_card" value="credit_card">
+              <label class="form-check-label" for="credit_card">
+                Credit Card
+                <img src="{% static 'images/visa-logo.png' %}" alt="Visa" style="height: 20px;" class="ms-2">
+                <img src="{% static 'images/mastercard-logo.png' %}" alt="MasterCard" style="height: 20px;" class="ms-1">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-</body>
-</html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
+
