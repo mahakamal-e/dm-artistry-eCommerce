@@ -6,7 +6,6 @@ from cart.models import CartItem
 from accounts.models import UserProfile
 from cart.cart import Cart
 from django.http import HttpResponse
-from django.contrib import messages
 from django.http import HttpResponseBadRequest
 
 
