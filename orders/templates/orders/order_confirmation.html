@@ -2,38 +2,39 @@
 {% load static %}
 
 {% block content %}
-<div class="order-confirmation-container">
-    <h1>Order Confirmation</h1>
-    <div class="confirmation-details">
-        <p>Thank you for your order!</p>
-        
-        {% if session_order %}
-        <!-- For anonymous users, data from session -->
-        <p><strong>Order Number:</strong> {{ session_order.order_number }}</p>
-        <p><strong>Payment Method:</strong> {{ session_order.payment_method }}</p>
-        <p><strong>Shipping Address:</strong></p>
-        <p>{{ session_order.address_line1 }}
-           {{ session_order.address_line2 }}
-           {{ session_order.city }}, {{ session_order.state }}
-           {{ session_order.postal_code }}<br>
-           {{ session_order.country }}</p>
-        <p><strong>Estimated Delivery:</strong> 2 to 4 business days</p>
-        {% else %}
-        <!-- For authenticated users, data from the database -->
-        <p><strong>Order Number:</strong> {{ order.order_number }}</p>
-        <p><strong>Payment Method:</strong> {{ order.payment_method }}</p>
-        <p><strong>Shipping Address:</strong></p>
-        <p>{{ order.address_line1 }}
-           {{ order.address_line2 }}
-           {{ order.city }}, {{ order.state }}
-           {{ order.postcode }}<br>
-           {{ order.country }}</p>
-        <p><strong>Estimated Delivery:</strong> 2 to 4 business days</p>
-        {% endif %}
-        
-        <p>We will notify you once your order is shipped.</p>
+<head><link rel="stylesheet" href="{% static 'css/order_page.css' %}"></head>
+<div class="order-confirmation-page">
+    <div class="order-confirmation-container">
+        <h1>Order Confirmation</h1>
+        <div class="confirmation-details">
+            <p>Thank you for your order!</p>
+            
+            {% if session_order %}
+            <!-- For anonymous users, data from session -->
+            <p><strong>Order Number:</strong> {{ session_order.order_number }}</p>
+            <p><strong>Payment Method:</strong> {{ session_order.payment_method }}</p>
+            <p><strong>Shipping Address:</strong></p>
+            <p>{{ session_order.address_line1 }}
+               {{ session_order.address_line2 }}
+               {{ session_order.city }}, {{ session_order.state }}
+               {{ session_order.postal_code }}<br>
+               {{ session_order.country }}</p>
+            <p><strong>Estimated Delivery:</strong> 2 to 4 business days</p>
+            {% else %}
+            <!-- For authenticated users, data from the database -->
+            <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+            <p><strong>Payment Method:</strong> {{ order.payment_method }}</p>
+            <p><strong>Shipping Address:</strong></p>
+            <p>{{ order.address_line1 }}
+               {{ order.address_line2 }}
+               {{ order.city }}, {{ order.state }}
+               {{ order.postcode }}<br>
+               {{ order.country }}</p>
+            <p><strong>Estimated Delivery:</strong> 2 to 4 business days</p>
+            {% endif %}
+            
+            <p>We will notify you once your order is shipped.</p>
+        </div>
     </div>
 </div>
-
-
 {% endblock %}
