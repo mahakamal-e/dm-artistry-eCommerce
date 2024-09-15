@@ -72,12 +72,11 @@ def profile(request):
     password_form = None
 
     # Check if the user has a profile; if not, create one
-    if not request.user.is_superuser:
-        try:
-            profile = request.user.userprofile
-        except UserProfile.DoesNotExist:
-            # Create a new profile if it does not exist
-            profile = UserProfile.objects.create(user=request.user)
+    try:
+        profile = request.user.userprofile
+    except UserProfile.DoesNotExist:
+        # Create a new profile if it does not exist
+        profile = UserProfile.objects.create(user=request.user)
 
     if request.method == 'POST':
         # Handle profile updates
