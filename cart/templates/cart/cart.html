@@ -96,8 +96,12 @@
           </div>
           <div class="card-body text-center">
             <h3 class="mb-4">${{ total_price }}</h3>
-            <a href="{% url 'checkout' %}" class="btn btn-lg btn-primary w-100">Checkout</a>
-          </div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'checkout' %}" class="btn btn-lg btn-primary w-100">Checkout</a>
+            {% else %}
+                <a href="{% url 'checkout_anonymous' %}" class="btn btn-lg btn-primary w-100">Checkout</a>
+            {% endif %}
+        </div>
 
           <div class="px-4 mt-4">
             <p class="mb-2"><i class="bi bi-shield-fill-check me-2"></i>Satisfaction Guaranteed</p>
