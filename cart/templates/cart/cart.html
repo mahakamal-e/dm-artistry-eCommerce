@@ -30,7 +30,7 @@
                     <p class="text-muted mb-0">Artwork Total: ${{ item.product.price }}</p>
                 </div>
                 <div class="ms-auto">
-                    <a class="btn btn-link text-muted" href="{% url 'remove_from_cart' item.product_id %}">&times;</a>
+                    <a class="btn btn-link text-muted" href="{% url 'remove_from_cart' item.id %}">&times;</a>
                 </div>
             </div>
             {% empty %}

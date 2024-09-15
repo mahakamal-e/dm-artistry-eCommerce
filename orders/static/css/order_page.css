@@ -1,0 +1,45 @@
+/* Ensure the body and html take up full height */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Center the container both horizontally and vertically */
+.order-confirmation-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Optional background color */
+}
+
+.order-confirmation-container {
+    width: 100%;
+    max-width: 1000px; /* Increase the maximum width of the container */
+    padding: 30px; /* Increase padding for more space */
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0; /* Increase border width */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Increase shadow size for emphasis */
+    text-align: center; /* Center text inside the container */
+    margin: 20px; /* Optional: add margin to prevent container from touching the edges */
+}
+
+.confirmation-details {
+    margin-top: 20px;
+    font-size: 18px; /* Increase font size for better readability */
+    line-height: 1.8; /* Increase line height for better spacing */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px; /* Space between the heading and the content */
+}
+
+p {
+    margin: 12px 0; /* Increase spacing between paragraphs */
+}
+
+strong {
+    color: #0056b3;
+}
