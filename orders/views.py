@@ -9,7 +9,6 @@ from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 
 
-
 @login_required
 def checkout(request):
     if request.method == 'POST':
