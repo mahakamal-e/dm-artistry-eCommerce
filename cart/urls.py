@@ -11,4 +11,5 @@ urlpatterns = [
     path('anon/', views.view_cart_anon, name='view_cart_anon'),  # For anonymous users
     path('anon/add/<int:product_id>/', views.add_to_cart_anon, name='add_to_cart_anon'),
     path('anon/remove/<int:product_id>/', views.remove_from_cart_anon, name='remove_from_cart_anon'),
+    path('cart/empty/', views.empty_cart_view, name='empty_cart'),
 ]
