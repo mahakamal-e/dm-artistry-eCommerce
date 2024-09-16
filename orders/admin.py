@@ -8,7 +8,7 @@ class OrderItemInline(admin.TabularInline):
     Args:
         model: The model class this inline admin interface is for.
         extra: Number of empty forms to display
-        readonly_fields: Fields that should be displayed as read-only.
+        Fields that should be displayed can edit.
     """
     model = OrderItem
     extra = 0
