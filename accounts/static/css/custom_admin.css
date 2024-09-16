@@ -1,0 +1,34 @@
+/* Header Styles */
+:root {
+    --admin-interface-header-background-color: #333; /* Header background color */
+    --admin-interface-header-text-color: #fff; /* Text color in the header */
+    --admin-interface-header-link-color: #f1f1f1; /* Link color in the header */
+    --admin-interface-header-link_hover_color: #ddd; /* Link color on hover */
+    --admin-interface-title-color: #fff; /* Title color */
+}
+
+/* Custom styles for site header */
+#branding {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center horizontally */
+    background-color: var(--admin-interface-header-background-color);
+    padding: 10px;
+}
+
+#branding a {
+    color: var(--admin-interface-header-text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+#branding img {
+    height: 60px; /* Adjust height for larger icon */
+    margin-right: 15px; /* Space between logo and text */
+}
+
+#branding span {
+    font-size: 2.5em; /* Larger text size for the site header */
+    color: var(--admin-interface-title-color);
+}
