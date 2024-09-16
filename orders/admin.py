@@ -12,7 +12,7 @@ class OrderItemInline(admin.TabularInline):
     """
     model = OrderItem
     extra = 0
-    readonly_fields = ('product', 'quantity', 'price')
+    fields = ['product', 'quantity', 'price']
     # The button to add a new item is provided automatically
 
 
