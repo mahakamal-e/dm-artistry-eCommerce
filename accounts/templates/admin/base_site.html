@@ -1,0 +1,35 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block branding %}
+    <div id="branding" class="d-flex align-items-center">
+        <a href="{% url 'admin:index' %}" title="{{ site_header }}" class="d-flex align-items-center">
+            <img src="{% static 'images/D&M Artistry.png' %}" alt="Site Logo" style="height: 40px; vertical-align: middle;" />
+            <span class="ms-2">{{ site_header }}</span>
+        </a>
+    </div>
+{% endblock %}
+
+{% block extrahead %}
+    <link rel="icon" href="{% static 'images/D&M Artistry.png' %}" type="image/x-icon">
+    
+    <link href="{% static 'css/custom_admin.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Admin Dashboard - D&M Artistry
+{% endblock %}
+
+{% block content %}
+    <div id="content-main" class="container mt-4">
+        {% block content_title %}
+            <h1 class="mb-4">{{ title }}</h1>
+        {% endblock %}
+        {{ block.super }}
+    </div>
+{% endblock %}
+
+{% block extra %}
+
+{% endblock %}
+

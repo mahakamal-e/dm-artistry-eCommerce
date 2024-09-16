@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from .models import UserProfile
 
+admin.site.site_header = "D&M Artistry E-Commerce"  # Default title at the top
+admin.site.site_title = "Admin Dashboard"  # Title in the browser tab
+admin.site.index_title = "Welcome to Admin Dashboard"
+
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
     can_delete = False
