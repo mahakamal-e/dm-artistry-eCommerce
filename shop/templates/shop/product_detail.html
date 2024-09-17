@@ -1,5 +1,30 @@
-<h1>{{ product.name }}</h1>
-<img src="{{ product.image.url }}" alt="{{ product.name }}">
-<p>{{ product.description }}</p>
-<p>Price: ${{ product.price }}</p>
-<button>Add to Cart</button>
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/show_product.css' %}"></head>
+<div class="product-page">
+    
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    <h3>{{ product.name }}</h3>
+    <p class="price">Price: ${{ product.price }}</p>
+
+    <p>{{ product.description }}</p>
+    
+    {% if user.is_authenticated %}
+    <a class="buy-now-button" href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+{% else %}
+    <a class="buy-now-button" href="{% url 'add_to_cart_anon' product.id %}">Add to Cart</a>
+{% endif %}
+
+    <!-- Artist Information -->
+    {% if product.artist %}
+    <div class="artist-info">
+        <h4>Artist Name</h4>
+        <p>{{ product.artist }}</p>
+
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
