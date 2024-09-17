@@ -1,4 +1,4 @@
-/* General page styling */
+
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -131,11 +131,12 @@ body {
 }
 
 .slides img {
-    width: 200%;
+    width: 185%;
     height: 500px;
     object-fit: scale-down;
     
 }
+
 
 
 .carousel-text {
@@ -153,12 +154,12 @@ body {
 
 .carousel-text h1 {
     font-size: 2.5em;
-    margin: 0;
+    margin: 30px;
     padding-bottom: 20px;
 }
 
 .shop-now {
-    background-color: #000; /* Black background */
+    background-color: #1c1b1b; /* Black background */
     color: #fff; /* White text */
     padding: 10px 20px;
     text-decoration: none;
@@ -213,7 +214,7 @@ body {
 
 .featured-artworks h2 {
     font-size: 2.5em;
-    color: #4A90E2;
+    color: #000000;
     margin-bottom: 30px;
 }
 
@@ -263,30 +264,16 @@ body {
 
 
 /* Latest Events Section */
-.latest-events {
-    text-align: center;
-    margin: 50px 0;
-}
 
-.latest-events h2 {
-    font-size: 2.5em;
-    color: #4A90E2;
-    margin-bottom: 30px;
-}
 
-.events-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap; /* Wrap items on smaller screens */
-}
+
 
 .single-event-item {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 6px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
+    padding: 15px;
+    width: 200px;
     text-align: center;
 }
 
@@ -340,4 +327,280 @@ footer ul li a:hover {
     }
 }
 
+carousel-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em; /* Increase size for better impact */
+    color: #fff; /* White color for contrast */
+    margin: 0;
+    padding-bottom: 10px;
+}
 
+.carousel-text h6 {
+    font-family: 'Lora', serif;
+    font-size: .5em;
+    color: #0a0a0a; /* White color for contrast */
+    margin: 30 px;
+    padding-bottom: 20px;
+}
+
+/* Categories Section */
+/* Categories Section */
+.categories {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.categories h2 {
+    font-size: 2.5em;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.category-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap; /* Keep items in a single row on larger screens */
+    overflow-x: auto; /* Horizontal scrolling for overflow */
+}
+
+.category-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px; /* Adjust width */
+    height: 500px; /* Increase height to prevent image cutting */
+    text-align: center;
+    transition: transform 0.3s ease; /* Smooth scale effect */
+}
+
+.category-item:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.category-item img {
+    width: 100%;
+    height: 300px; /* Increase height for a larger display */
+    object-fit: contain; /* Ensure the image fits without being cropped */
+    border-radius: 8px;
+}
+
+.category-item h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.category-item p {
+    font-size: 1em;
+    color: #333;
+}
+
+.category-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Product Grid Section */
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap; /* Keep products in a single row on larger screens */
+    overflow-x: auto; /* Allow scrolling for overflow */
+}
+
+.single-product-item {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 400px; /* Increase width */
+    height: 500px; /* Increase height to accommodate larger images */
+}
+
+.single-product-item img {
+    width: 100%;
+    border-radius: 8px;
+    height: 300px; /* Adjust height for a larger image display */
+    object-fit: contain; /* Ensure images are not cropped */
+}
+
+.single-product-item h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.buy-now-button {
+    background-color: #FFD700;
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.buy-now-button:hover {
+    background-color: #333;
+    color: #FFD700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-grid, .category-grid {
+        flex-wrap: wrap; /* Wrap items on smaller screens */
+    }
+
+    .single-product-item, .category-item {
+        width: 100%; /* Full width on smaller screens */
+        height: auto; /* Adjust height for responsiveness */
+    }
+}
+
+
+/* Latest Events Section */
+
+/* Similar to .categories section */
+.latest-events {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    text-align: center;
+    margin: 0;
+}
+
+.latest-events h2 {
+    position: absolute;
+    top: 20px; /* Space from the top of the section */
+    left: 50%;
+    transform: translateX(-50%); /* Center the title horizontally */
+    font-size: 2.5em;
+    color: #4A90E2;
+    margin: 0;
+}
+
+.events-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.single-event-item {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-event-item .event-image {
+    width: 85%;
+    height: 85%;
+    object-fit: scale-down; /* Ensures image covers the entire area without distortion */
+}
+
+.explore-events-btn {
+    position: absolute;
+    bottom: 20px; /* Space from the bottom of the section */
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.explore-events-btn:hover {
+    background-color: #4A90E2; /* Change button color on hover */
+}
+
+
+.view-more-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Same as explore-events-btn */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Space above the button */
+}
+
+.view-more-btn:hover {
+    background-color: #4A90E2; /* Same as explore-events-btn hover color */
+}
+
+
+.contact-us {
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Adjust max-width as needed */
+    margin: 0 auto; /* Center the section */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color for contrast */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-align: center; /* Center text */
+}
+
+.video-container {
+    margin: 20px 0; /* Space around the video */
+    position: relative; /* Needed for overlay text or controls */
+    display: flex;
+    justify-content: center; /* Center video horizontally */
+}
+
+video {
+    width: 100%; /* Make video responsive */
+    max-width: 100%; /* Ensure the video does not exceed container width */
+    border-radius: 8px; /* Rounded corners for the video */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Ensure compatibility for Safari and other browsers */
+video::-webkit-media-controls {
+    display: none !important; /* Hide default controls in Safari */
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Same as view-more-btn */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Space above the button */
+    text-align: center; /* Center text within the button */
+    position: relative; /* For positioning the icon */
+}
+
+.contact-button i {
+    margin-right: 8px; /* Space between the icon and text */
+}
+
+.contact-button:hover {
+    background-color: #4A90E2; /* Same hover color as view-more-btn */
+}
+
+/* Additional styling for contact section */
+.contact-section {
+    width: 80%; /* Adjust width as needed */
+    max-width: 600px; /* Adjust max-width as needed */
+    margin: 0 auto; /* Center the section */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color for contrast */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-align: center; /* Center text within the section */
+}
