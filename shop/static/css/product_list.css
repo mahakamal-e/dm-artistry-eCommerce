@@ -1,60 +1,200 @@
-.product-container {
-    max-width: 1200px; /* Adjust as needed */
-    margin: 0 auto;
-    padding: 0 15px; /* Add padding to container */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+/* Align text under the image */
+.product-details p {
+    text-align: justify;
+}
+
+.product-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Grid Layout */
 .row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns in a row */
-    gap: 15px; /* Space between items */
-    margin-bottom: 20px; /* Space between rows */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns in a row */
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
+/* Product Item Styles */
 .product-item {
-    background-color: #f9f9f9; /* Background color for items */
-    padding: 15px; /* Padding inside items */
-    border: 1px solid #ddd; /* Border for items */
-    border-radius: 5px; /* Rounded corners */
-    text-align: center; /* Center text */
-    position: relative; /* Position relative for absolute positioning of buttons */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .product-image img {
-    max-width: 100%; /* Ensure images fit inside the product item */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.quick-review,
-.add-to-cart-button {
-    display: none; /* Initially hide buttons */
-    position: absolute; /* Position buttons absolutely within the product item */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center horizontally */
-    width: 100%; /* Full width */
-    bottom: 10px; /* Space from the bottom */
-    background-color: yellow; /* Yellow background color */
-    border: none; /* Remove default border */
-    color: black; /* Text color */
-    padding: 10px; /* Padding */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor */
-}
-
-.product-item:hover .quick-review {
-    display: block; /* Show quick review button on hover */
-    bottom: 50px; /* Position above add-to-cart button */
-}
-
-.product-item:hover .add-to-cart-button {
-    display: block; /* Show add to cart button on hover */
-}
-
-.add-to-cart-button:hover {
-    background-color: black; /* Black background on hover */
-    color: yellow; /* Yellow text on hover */
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .product-details {
     margin-top: 10px;
 }
+
+/* Text under the image */
+.product-details h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+/* Buttons */
+.quick-review,
+.add-to-cart-button {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    background-color: yellow;
+    border: none;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    bottom: 10px;
+}
+
+.product-item:hover .quick-review {
+    display: block;
+    bottom: 60px; /* Position above add-to-cart button */
+}
+
+.product-item:hover .add-to-cart-button {
+    display: block;
+}
+
+.add-to-cart-button:hover {
+    background-color: black;
+    color: yellow;
+}
+
+/* Pagination Styles */
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination .step-links {
+    display: inline-block;
+}
+
+.pagination .step-links a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.pagination .step-links a:hover {
+    text-decoration: underline;
+}
+
+.pagination .current {
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .row {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .row {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+}
+
+/* Filter Container */
+.filter-container {
+    background-color: #f9f9f9; /* Light background for the filter section */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow */
+    margin-bottom: 20px; /* Add space between filter and product grid */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Label Style */
+.filter-container label {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 1.1em;
+    color: #333; /* Darker color for contrast */
+}
+
+/* Dropdown Styling */
+.filter-container select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 1em;
+    color: #333;
+    cursor: pointer;
+    width: 200px; /* Set width for consistency */
+}
+
+.filter-container select:focus {
+    outline: none;
+    border-color: #007bff; /* Blue border when focused */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Slight blue glow */
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 600px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-container label, .filter-container select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+.remove-filter-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.remove-filter-button:hover {
+    background-color: #d32f2f;
+}
+
