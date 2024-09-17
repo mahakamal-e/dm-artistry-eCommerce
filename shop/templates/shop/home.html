@@ -9,18 +9,19 @@
     <div class="carousel-container">
         <!-- Slide 1: September discount -->
         <div class="slides fade">
-            <img src="{% static 'images/img3.png' %}" alt="Special Offer">
+            <img src="{% static 'images/slider_img1.png' %}" alt="Special Offer">
             <div class="carousel-text">
-                <h1>10% Discount for September!</h1>
+                <h1>To look at art is to fall in love</h1>
+                <h6>Paul Gauguin</h6>
                 <a href="{% url 'register' %}" class="shop-now">Sign Up Now</a>
             </div>
         </div>
         <!-- Slide 2: Discover Artworks -->
         <div class="slides fade">
-            <img src="{% static 'images/img2.png' %}" alt="Art Sale">
+            <img src="{% static 'images/slider_img2.png' %}" alt="Art Sale">
             <div class="carousel-text">
                 <h1>Discover Stunning Artworks!</h1>
-                <a href="{% url 'product_list' %}" class="shop-now">Shop Now</a>
+                <a href="{% url 'product_list' %}" class="shop-now">Explore</a>
             </div>
         </div>
         <!-- Carousel navigation -->
@@ -51,28 +52,50 @@
     </div>
     <a href="{% url 'product_list' %}" class="view-more-btn">View More</a>
 </section>
-
-<!-- Latest Art Events Section -->
-<section class="latest-events">
-    <h2>Latest Art Events</h2>
-    <div class="events-grid">
-        {% for event in events|slice:":3" %}
-        <div class="single-event-item">
-            <h3>{{ event.title }}</h3>
-            <p>{{ event.description }}</p>
-            <p>Date: {{ event.date }}</p>
-            <p>Location: {{ event.location }}</p>
+<section class="categories">
+    <h2>Explore Our Categories</h2>
+    <div class="category-grid">
+        {% for category in categories|slice:":3" %}
+        <div class="category-item">
+            <a href="{% url 'product_list' %}?category={{ category.id }}">
+                {% if category.image %}
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                {% else %}
+                <img src="{% static 'images/default.jpg' %}" alt="{{ category.name }}">
+                {% endif %}
+                <h3>{{ category.name }}</h3>
+                <p>{{ category.description }}</p>
+            </a>
         </div>
         {% endfor %}
     </div>
-    <a href="#" class="view-more-btn">See More</a>
 </section>
+
+
+<!-- Latest Art Events Section -->
+<section class="latest-events">
+    <!-- Title positioned above the section -->
+    
+    
+    <div class="events-grid">
+        <!-- Large event item containing the image -->
+        <div class="single-event-item large-event">
+            <img src="{% static 'images/events_img.png' %}" alt="New Events" class="event-image">
+        </div>
+        <!-- Button placed below the image -->
+        <a href="#" class="explore-events-btn">Explore Events</a>
+    </div>
+</section>
+
+
+  
+
+
+
 
 {% endblock %}
 
 {% block scripts %}
 
 {% endblock %}
-
-
 
