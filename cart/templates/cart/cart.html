@@ -7,8 +7,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="{% static 'css/cart_view.css' %}">
 
-
-
 <div class="content-wrapper">
   <div class="content-container">
     <div class="split left">
@@ -60,26 +58,31 @@
             {% endfor %}
         </div>
     {% endif %}
-        <!-- Promo / Gift Card Section -->
-        <div class="mt-4">
-          <h5>Apply Promo OR Gift Card Code</h5>
-          <div class="row">
-            <!-- Promo Code Section -->
-            <div class="col-md-6">
-              <div class="input-group mb-2">
-                <input type="text" class="form-control" placeholder="Enter Promo Code">
-                <button class="btn btn-outline-primary">Apply</button>
-              </div>
-            </div>
-            <!-- Gift Card Code Section -->
-            <div class="col-md-6">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter Gift Card Code">
-                <button class="btn btn-outline-primary">Apply</button>
-              </div>
-            </div>
+   <!-- Promo / Gift Card Section -->
+<div class="mt-4">
+  <h5>Apply Promo OR Gift Card Code</h5>
+  <div class="row">
+      <!-- Promo Code Section -->
+      <div class="col-md-6">
+          <div class="input-group mb-2">
+              <input type="text" id="promoCode" class="form-control" placeholder="Enter Promo Code">
+              <button id="applyPromoButton" class="btn btn-outline-primary">Apply</button>
           </div>
-        </div>
+          <!-- Promo Code Error Message -->
+          <div id="promoErrorMessage" class="text-danger mt-2" style="display: none;"></div>
+      </div>
+      <!-- Gift Card Code Section -->
+      <div class="col-md-6">
+          <div class="input-group">
+              <input type="text" id="giftCardCode" class="form-control" placeholder="Enter Gift Card Code">
+              <button id="applyGiftCardButton" class="btn btn-outline-primary">Apply</button>
+          </div>
+          <!-- Gift Card Code Error Message -->
+          <div id="giftCardErrorMessage" class="text-danger mt-2" style="display: none;"></div>
+      </div>
+  </div>
+</div>
+
 
         <!-- Continue Shopping Link -->
         <div class="d-flex justify-content-between align-items-center mt-4">
@@ -106,7 +109,7 @@
           <div class="px-4 mt-4">
             <p class="mb-2"><i class="bi bi-shield-fill-check me-2"></i>Satisfaction Guaranteed</p>
             <p class="mb-2"><i class="bi bi-lock-fill me-2"></i>Safe & Secure Shopping</p>
-            <p><i class="bi bi-people-fill me-2"></i>Support An Artist With Every Purchase</p>
+
           </div>
         </div>
 
@@ -121,6 +124,7 @@
     </div>
   </div>
 </div>
+<script src="{% static 'js/error_messages.js' %}"></script>
 
 <!-- Load Bootstrap JS (4.5.2) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
