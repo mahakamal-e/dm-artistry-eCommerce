@@ -7,16 +7,16 @@
     {
         "name": "Portrait",
         "description": "Portrait paintings.",
-        "image": "categories/landscape.jpg"
+        "image": "categories/portrait.jpg"
     },
     {
-        "name": "Nature",
-        "description": "Nature-themed paintings.",
-        "image": "categories/landscape.jpg"
+        "name": "Abstract",
+        "description": "Abstract paintings.",
+        "image": "categories/abstract.jpg"
     },
     {
         "name": "Still Life",
         "description": "Still life paintings.",
-        "image": "categories/landscape.jpg"
+        "image": "categories/still_life.jpg"
     }
 ]
