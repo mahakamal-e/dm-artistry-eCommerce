@@ -1,0 +1,60 @@
+/* about_us.css */
+
+/* General Styles for the About Page */
+.about-page {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color for the page */
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styling the Main Box */
+.about-content {
+    background: #ffffff; /* White background for the content box */
+    border-radius: 8px; /* Rounded corners for the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Solid shadow effect */
+    padding: 20px;
+}
+
+/* Image Container Styling */
+.about-image-container {
+    text-align: center; /* Center the image container */
+    margin: 20px 0; /* Space above and below the image */
+}
+
+.about-image {
+    max-width: 100%; /* Ensure the image does not exceed the container width */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 8px; /* Rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect on image */
+}
+
+/* Text Styling */
+h2, h3 {
+    color: #333; /* Dark text color for headings */
+}
+
+p {
+    line-height: 1.6;
+    color: #555; /* Slightly lighter text color for paragraphs */
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+    color: #555; /* Color for list items */
+}
+
+li {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .about-image-container {
+        text-align: center; /* Center the image on smaller screens */
+    }
+}

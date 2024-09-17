@@ -1,26 +1,56 @@
 {% extends 'shop/base.html' %}
-
+{% load static %}
 {% block title %}Product List{% endblock %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+</head>
+
+
+<div class="filter-container">
+    <form method="get" action="">
+        <label for="category">Filter by Category:</label>
+        <select id="category" name="category" onchange="this.form.submit()">
+            <option value="">All Categories</option>
+            {% for cat in categories %}
+                <option value="{{ cat.id }}" {% if request.GET.category == cat.id|stringformat:"s" %}selected{% endif %}>{{ cat.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <!-- Button to remove filter -->
+    {% if request.GET.category %}
+        <form method="get" action="" style="display:inline;">
+            <button type="submit" class="remove-filter-button">Remove Filter</button>
+        </form>
+    {% endif %}
+</div>
+
 <div class="product-container">
     <div class="row">
         {% for product in products %}
             <div class="product-item">
                 <div class="product-image">
                     <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <div class="product-details-overlay">
+                        <h3>{{ product.name }}</h3>
+                        <p>Price: ${{ product.price }}</p>
+                        <p>Category: {{ product.category.name }}</p>
+                    </div>
                 </div>
-                <div class="product-details">
-                    <h3>{{ product.name }}</h3>
-                    <p>Price: ${{ product.price }}</p>
-                    <p>Category: {{ product.category.name }}</p>
-                    <a href="{% url 'product_detail' product.id %}" class="quick-review">Quick Review</a>
-                    {% if user.is_authenticated %}
-                        <a class="buy-now-button" href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
-                    {% else %}
-                        <a class="buy-now-button" href="{% url 'add_to_cart_anon' product.id %}">Add to Cart</a>
-                    {% endif %}
-                </div>
+                <a href="{% url 'product_detail' product.id %}" class="quick-review">
+                    <i class="fas fa-search"></i> View
+                </a>
+                {% if user.is_authenticated %}
+                    <a class="add-to-cart-button" href="{% url 'add_to_cart' product.id %}">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </a>
+                {% else %}
+                    <a class="add-to-cart-button" href="{% url 'add_to_cart_anon' product.id %}">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </a>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
@@ -30,8 +60,12 @@
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
-            <a href="?page=1{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">previous</a>
+            <a href="?page=1{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                <i class="fas fa-chevron-left"></i> First
+            </a>
+            <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                <i class="fas fa-chevron-left"></i> Previous
+            </a>
         {% endif %}
 
         <span class="current">
@@ -39,16 +73,13 @@
         </span>
 
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">last &raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                Next <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}">
+                Last <i class="fas fa-chevron-right"></i>
+            </a>
         {% endif %}
     </span>
 </div>
 {% endblock %}
-
-
-
-
-
-
-

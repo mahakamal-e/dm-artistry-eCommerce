@@ -16,6 +16,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/')
     stock = models.PositiveIntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
+    artist = models.CharField(max_length=255, default="")
+    
     def __str__(self):
         return self.name

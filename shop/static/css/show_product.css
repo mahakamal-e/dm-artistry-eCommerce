@@ -1,0 +1,115 @@
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Page Container */
+.product-page {
+   
+    width: 100%;
+    max-width: 1200px; /* Adjust to your desired max-width */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Image */
+.product-page img {
+    width: 70%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Product Details */
+.product-page h1 {
+    font-size: 2.5em;
+    margin: 0 0 20px;
+    color: #333;
+}
+
+.product-page p {
+    font-size: 1.2em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.product-page .price {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.5em;
+}
+
+.product-page button {
+    background-color: #1c1b1b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.product-page button:hover {
+    background-color: #333;
+}
+
+/* Artist Information */
+.artist-info {
+    margin-top: 40px;
+}
+
+.artist-info h2 {
+    font-size: 2em;
+    color: #000;
+    margin: 0 0 10px;
+}
+
+.artist-info p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-page {
+        padding: 10px;
+    }
+
+  
+
+    .product-page p, .artist-info p {
+        font-size: 1em;
+    }
+
+  
+}
+
+.buy-now-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff; /* White text color */
+    background-color: #000; /* Black background color */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .buy-now-button:hover {
+    background-color: #333; /* Darker shade on hover */
+    color: #fff; /* Ensure text remains white on hover */
+  }
+
+
+  /* Ensure the parent container has relative positioning */
+
+
+/* Overlay styling */

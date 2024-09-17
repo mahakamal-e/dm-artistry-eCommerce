@@ -1,195 +1,142 @@
 [
     {
-        "name": "Sunset Vista",
-        "description": "Landscape painting, 140 W x 180 H x 3 D cm.",
-        "price": "150.00",
-        "image": "painting1.jpg",
-        "stock": 10,
-        "category": 1
+        "name": "Abstract face",
+        "description": "Abstract painting.",
+        "price": "170.00",
+        "image": "abstract1.jpeg",
+        "stock": 1,
+        "category": 3,
+        "artist": "Deena Kamal"
     },
     {
-        "name": "Mountain Peaks",
-        "description": "Landscape painting, 120 W x 150 H x 2 D cm.",
+        "name": "Autumn Serenity",
+        "description": "Landscape painting.",
         "price": "180.00",
-        "image": "painting1.jpg",
-        "stock": 8,
-        "category": 1
+        "image": "land_scape2.png",
+        "stock": 1,
+        "category": 1,
+        "artist": "Deena Kamal"
     },
+    
     {
-        "name": "Ocean Breeze",
-        "description": "Landscape painting, 100 W x 130 H x 4 D cm.",
+        "name": "Traditional Moroccan Sanctuary",
+        "description": "Landscape painting.",
         "price": "160.00",
-        "image": "painting1.jpg",
-        "stock": 12,
-        "category": 1
-    },
-    {
-        "name": "Autumn Forest",
-        "description": "Landscape painting, 150 W x 200 H x 5 D cm.",
-        "price": "200.00",
-        "image": "painting1.jpg",
-        "stock": 6,
-        "category": 1
-    },
-    {
-        "name": "Desert Sands",
-        "description": "Landscape painting, 160 W x 170 H x 3 D cm.",
-        "price": "175.00",
-        "image": "painting1.jpg",
-        "stock": 7,
-        "category": 1
-    },
-    {
-        "name": "Winter Wonderland",
-        "description": "Landscape painting, 140 W x 180 H x 2 D cm.",
-        "price": "155.00",
-        "image": "painting1.jpg",
-        "stock": 9,
-        "category": 1
+        "image": "land_scape3.jpg",
+        "stock": 1,
+        "category": 1,
+        "artist": "Maha Kamal"
     },
     {
         "name": "Royal Portrait",
-        "description": "Portrait painting, 100 W x 140 H x 2 D cm.",
+        "description": "Portrait painting.",
         "price": "250.00",
-        "image": "painting1.jpg",
-        "stock": 5,
-        "category": 2
+        "image": "portrait1.jpg",
+        "stock": 1,
+        "category": 2,
+        "artist": "Deena Kamal"
     },
     {
-        "name": "Elegant Lady",
-        "description": "Portrait painting, 120 W x 150 H x 3 D cm.",
+        "name": "Sandy Horizons",
+        "description": "Landscape painting.",
+        "price": "150.00",
+        "image": "land_scape1.png",
+        "stock": 1,
+        "category": 1,
+        "artist": "Deena Kamal"
+        
+    },
+
+    {
+        "name": "Shadows of Elegance",
+        "description": "Portrait painting.",
         "price": "300.00",
-        "image": "painting1.jpg",
-        "stock": 4,
-        "category": 2
+        "image": "portrait2.jpeg",
+        "stock": 1,
+        "category": 2,
+        "artist": "Maha Kamal"
     },
     {
-        "name": "Historical Figure",
-        "description": "Portrait painting, 130 W x 160 H x 4 D cm.",
+        "name": "Victorian Lady",
+        "description": "Portrait painting.",
         "price": "280.00",
-        "image": "painting1.jpg",
-        "stock": 6,
-        "category": 2
+        "image": "portrait3.jpg",
+        "stock": 1,
+        "category": 2,
+        "artist": "Maha Kamal"
     },
     {
         "name": "Classic Beauty",
-        "description": "Portrait painting, 140 W x 170 H x 3 D cm.",
+        "description": "Portrait painting.",
         "price": "290.00",
-        "image": "painting1.jpg",
-        "stock": 5,
-        "category": 2
+        "image": "portrait4.JPG",
+        "stock": 1,
+        "category": 2,
+        "artist": "Deena Kamal"
     },
     {
-        "name": "Modern Face",
-        "description": "Portrait painting, 110 W x 150 H x 2 D cm.",
-        "price": "260.00",
-        "image": "painting1.jpg",
-        "stock": 7,
-        "category": 2
+        "name": "Classic",
+        "description": "Portrait painting.",
+        "price": "290.00",
+        "image": "portrait5.JPG",
+        "stock": 1,
+        "category": 2,
+        "artist": "Maha Kamal"
     },
+  
     {
-        "name": "Noble Person",
-        "description": "Portrait painting, 120 W x 140 H x 3 D cm.",
-        "price": "270.00",
-        "image": "painting1.jpg",
-        "stock": 6,
-        "category": 2
-    },
-    {
-        "name": "Forest Walk",
-        "description": "Nature painting, 130 W x 170 H x 3 D cm.",
-        "price": "170.00",
-        "image": "painting1.jpg",
-        "stock": 9,
-        "category": 3
-    },
-    {
-        "name": "River Flow",
-        "description": "Nature painting, 140 W x 180 H x 4 D cm.",
+        "name": "Silent Symphony",
+        "description": "Abstract painting.",
         "price": "190.00",
-        "image": "painting1.jpg",
-        "stock": 8,
-        "category": 3
+        "image": "abstract2.jpg",
+        "stock": 1,
+        "category": 3,
+        "artist": "Deena Kamal"
     },
     {
-        "name": "Mountain Stream",
-        "description": "Nature painting, 120 W x 160 H x 3 D cm.",
-        "price": "180.00",
-        "image": "painting1.jpg",
-        "stock": 7,
-        "category": 3
+        "name": "Abstract Drift",
+        "description": "Abstract painting.",
+        "price": "190.00",
+        "image": "abstract3.jpg",
+        "stock": 1,
+        "category": 3,
+        "artist": "Deena Kamal"
     },
     {
-        "name": "Autumn Leaves",
-        "description": "Nature painting, 150 W x 200 H x 5 D cm.",
-        "price": "200.00",
-        "image": "painting1.jpg",
-        "stock": 6,
-        "category": 3
+        "name": "Abstract",
+        "description": "Abstract painting.",
+        "price": "190.00",
+        "image": "abstract4.jpg",
+        "stock": 1,
+        "category": 3,
+        "artist": "Deena Kamal"
     },
     {
-        "name": "Spring Bloom",
-        "description": "Nature painting, 130 W x 170 H x 2 D cm.",
-        "price": "165.00",
-        "image": "painting1.jpg",
-        "stock": 8,
-        "category": 3
-    },
-    {
-        "name": "Summer Garden",
-        "description": "Nature painting, 140 W x 180 H x 3 D cm.",
-        "price": "175.00",
-        "image": "painting1.jpg",
-        "stock": 7,
-        "category": 3
-    },
-    {
-        "name": "Fruit Bowl",
-        "description": "Still life painting, 120 W x 150 H x 2 D cm.",
+        "name": "Vase and Statue Stillness",
+        "description": "Still life painting.",
         "price": "140.00",
-        "image": "painting1.jpg",
-        "stock": 10,
-        "category": 4
+        "image": "still_life1.jpg",
+        "stock": 1,
+        "category": 4,
+        "artist": "Maha Kamal"
     },
     {
-        "name": "Vase of Flowers",
-        "description": "Still life painting, 110 W x 140 H x 3 D cm.",
+        "name": "Vase",
+        "description": "Still life painting.",
         "price": "150.00",
-        "image": "painting1.jpg",
-        "stock": 9,
-        "category": 4
+        "image": "still_life2.jpg",
+        "stock": 1,
+        "category": 4,
+        "artist": "Maha Kamal"
     },
     {
-        "name": "Table Setting",
-        "description": "Still life painting, 130 W x 160 H x 4 D cm.",
+        "name": "Home",
+        "description": "Still life painting.",
         "price": "160.00",
-        "image": "painting1.jpg",
-        "stock": 8,
-        "category": 4
-    },
-    {
-        "name": "Wine and Cheese",
-        "description": "Still life painting, 140 W x 180 H x 3 D cm.",
-        "price": "170.00",
-        "image": "painting1.jpg",
-        "stock": 7,
-        "category": 4
-    },
-    {
-        "name": "Antique Clock",
-        "description": "Still life painting, 120 W x 150 H x 2 D cm.",
-        "price": "155.00",
-        "image": "painting1.jpg",
-        "stock": 6,
-        "category": 4
-    },
-    {
-        "name": "Old Books",
-        "description": "Still life painting, 130 W x 170 H x 3 D cm.",
-        "price": "165.00",
-        "image": "painting1.jpg",
-        "stock": 8,
-        "category": 4
+        "image": "still_life3.jpg",
+        "stock": 1,
+        "category": 4,
+        "artist": "Maha Kamal"
     }
 ]
 
