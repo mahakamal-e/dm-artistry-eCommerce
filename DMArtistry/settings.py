@@ -127,3 +127,5 @@ STATICFILES_DIRS = [
     BASE_DIR / 'shop' / 'static',
   
 ]
+
+

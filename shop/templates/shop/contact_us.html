@@ -1,0 +1,24 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/contact_us.css' %}">
+</head>
+<div class="contact-form">
+    <h1>Contact Us</h1>
+    
+    {% if success_message %}
+            <p class="success-message">{{ success_message }}</p>
+        {% endif %}
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+
+{% endblock %}

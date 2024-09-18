@@ -1,12 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Category
-from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.contrib.auth import update_session_auth_hash
-from django.contrib import messages
-from django.http import JsonResponse
-from django.db import transaction
-from django.contrib.auth.models import AnonymousUser
+from .forms import ContactForm
+import logging
+
+
 
 def product_list(request):
     products = Product.objects.all()
@@ -50,3 +48,26 @@ def home_view(request):
 
 def about(request):
     return render(request, 'shop/about.html')
+
+
+
+def contact_us(request):
+    success_message = None
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Extract form data
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            success_message = "Thank you for your message. We will get back to you soon."
+            form = ContactForm()
+    else:
+        form = ContactForm()
+    
+    context = {
+        'form': form,
+        'success_message': success_message
+        }
+    
+    return render(request, 'shop/contact_us.html', context )

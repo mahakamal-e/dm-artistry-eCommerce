@@ -1,0 +1,72 @@
+.contact-form {
+    max-width: 1000px;
+    padding-top: 20px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    min-height: 50vh;
+} 
+
+.contact-form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Optional background color */
+}
+
+.contact-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-form p {
+    font-size: 18px;
+    color: #000000;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-form input, .contact-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: large;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    padding: 12px 20px; /* Adjust padding for more space around the text */
+    border: none;
+    border-radius: 6px;
+    background-color: #282b2e;
+    color: white;
+    cursor: pointer;
+    margin-top: 200px;
+    font-size: 20px; /* Increase font size for larger text inside the button */
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+/* Add to your CSS file */
+
+.success-message {
+    padding: 15px;
+    background-color: #d4edda; /* Light green background */
+    color: #38884a; /* Dark green text */
+    border: 1px solid #c3e6cb; /* Slightly darker green border */
+    border-radius: 4px;
+    margin-bottom: 20px; /* Space below the message */
+    font-size: 18px; /* Adjust as needed */
+}
