@@ -52,7 +52,8 @@
 | `/accounts/login/`                            | `GET`, `POST`| Login page for users to authenticate.                                                |
 | `/accounts/profile/`                          | `GET`       | Displays the user's profile and order history (authenticated users only).            |
 | `/accounts/logout/`                           | `POST`      | Logs out the current user.                                                           |
-###Explanation of Routes
+
+### Explanation of Routes
 **Homepage**: Displays featured products and main content of the site.
 **About Us**: Provides information about D&M Artistry.
 **Contact Us**: Allows users to get in touch with you.
