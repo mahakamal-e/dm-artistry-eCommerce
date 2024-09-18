@@ -65,11 +65,17 @@
 **Logout**: Logs the user out of their session.
 This table provides a clear overview of the different routes and their purposes in your Django project.## Installation and Setup
 
-### Prerequisites
-- Python 3.x
-- Django 4.x
-- Redis (optional, for caching)
-- SQLite (or PostgreSQL for production)
+### Technologies Used
+- Python 3.x: The backend programming language.
+- Django 4.x: The web framework for developing the application.
+- SQLite: Used as the default database during development.
+- HTML5: Used for the structure.
+- CSS3:  Used for styling and layout of the pages
+- JavaScript: Adds interactivity and dynamic content updates on the client side.
+  
+### Database Notes
+Development: Currently, the project uses SQLite as the database. SQLite is lightweight and doesn't require complex configurations, making it ideal for development.
+Production: In production, we plan to switch to PostgreSQL, which offers more robust performance and supports large-scale applications more efficiently.
 
 ### Steps to Run the Project
 
