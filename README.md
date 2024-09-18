@@ -110,11 +110,11 @@ This table provides a clear overview of the different routes and their purposes 
 
 ## Usage Guide
 
-Homepage: Browse featured products.
-Shop: Navigate through the available art categories and select products to view in detail.
-Cart: Add products to the cart, review them, and adjust quantities.
-Checkout: After adding products, proceed to checkout, fill in shipping details, and select a payment method.
-Profile: If registered, view order history and manage account settings.
+Homepage: Browse featured products. <br />
+Shop: Navigate through the available art categories and select products to view in detail. <br \>
+Cart: Add products to the cart, review them, and adjust quantities. <br />
+Checkout: After adding products, proceed to checkout, fill in shipping details, and select a payment method. <br />
+Profile: If registered, view order history and manage account settings. <br />
 
 ## Authors
 
