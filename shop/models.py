@@ -14,7 +14,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='products/')
-    stock = models.PositiveIntegerField()
+    stock = models.PositiveIntegerField(default=3)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     artist = models.CharField(max_length=255, default="")
     

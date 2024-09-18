@@ -6,9 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-9c7ez3=jxhfoid_-qy6orvlsa#(*-d1pw85q%_v1+svk%up&ep'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -42,6 +40,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
@@ -71,12 +70,6 @@ WSGI_APPLICATION = 'DMArtistry.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -127,5 +120,22 @@ STATICFILES_DIRS = [
     BASE_DIR / 'shop' / 'static',
   
 ]
-
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',  # Ensure this is correct
+        'NAME': 'db_artdatabase',                    # Your database name
+        'USER': 'db_manager',                        # Your database user
+        'PASSWORD': 'artdb_password',                # Your database password
+        'HOST': 'localhost',                         # Database server address
+        'PORT': '5432',                              # Default PostgreSQL port
+    }
+}
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # Use SQLite backend
+        'NAME': BASE_DIR / 'db.sqlite3',         # Path to your SQLite database file
+    }
+}
 

@@ -58,3 +58,19 @@ li {
         text-align: center; /* Center the image on smaller screens */
     }
 }
+/* Ensure the container has proper styling */
+.social-media-links {
+    text-align: center; /* Center the icons */
+    margin-top: 20px;   /* Add some space above */
+}
+
+.social-icon {
+    width: 20px;  /* Adjust the width of the icon */
+    height: 20px; /* Adjust the height of the icon */
+    margin: 0 10px; /* Space between icons */
+    vertical-align: middle; /* Align icons vertically */
+}
+
+.social-icon-link {
+    display: inline-block; /* Ensure proper alignment */
+}
