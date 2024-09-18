@@ -98,11 +98,11 @@ This table provides a clear overview of the different routes and their purposes 
    python manage.py import_data
 
 10. **Import Additional Data**
-    ```bash
+   ```bash
    python manage.py load_data
 
 12. **Run the Development Server**
-    ```bash
+   ```bash
    python manage.py runserver
 
 ## Usage Guide
