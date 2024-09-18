@@ -94,8 +94,8 @@ Profile: If registered, view order history and manage account settings.
 
 ## Authors
 
-- **[Maha Kamal]** - *Full-Stack Developer* - [Your GitHub Profile](https://github.com/mahakamal-e)
-- **[Deena Kamal]** - *Full-Stack Developer* - [Partner's GitHub Profile](https://github.com/deenakamal)
+- **[Maha Kamal]** - *Full-Stack Developer* - (https://github.com/mahakamal-e)
+- **[Deena Kamal]** - *Full-Stack Developer* - (https://github.com/deenakamal)
 
 We worked together to build D&M Artistry, an online platform for showcasing and purchasing artwork. Our collaborative effort focused on creating a user-friendly e-commerce experience, implementing key features like product listings, shopping carts, and user profiles.
 
