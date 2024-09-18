@@ -80,23 +80,29 @@ This table provides a clear overview of the different routes and their purposes 
 
  
 2. **Activate the virtual environment**:
+   ```bash
    python -m venv myenv
    source myenv/bin/activate
 
-3. **Install Dependencies**
+4. **Install Dependencies**
+   ```bash
    pip install -r requirements.txt
 
-4. **Apply Migrations**
+6. **Apply Migrations**
+   ```bash
    python manage.py makemigrations
    python manage.py migrate
 
-6. **Load Initial Data**
+8. **Load Initial Data**
+   ```bash
    python manage.py import_data
 
-7. **Import Additional Data**
+10. **Import Additional Data**
+    ```bash
    python manage.py load_data
 
-8. **Run the Development Server**
+12. **Run the Development Server**
+    ```bash
    python manage.py runserver
 
 ## Usage Guide
