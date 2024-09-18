@@ -9,14 +9,26 @@
 - **Checkout**: A seamless checkout process with payment methods, including credit cards (Stripe integration planned, not yet implemented).
 - **Order Management**: Users can view their past orders from their profile.
 - **Anonymous User Support**: The platform allows anonymous users to shop and checkout as guests.
-  
-## Apps Overview
 
-1. **Shop**: Handles product listings and categories, allowing users to browse and view artwork.
-2. **Cart**: Manages the shopping cart functionality, including adding and removing items.
-3. **Orders**: Manages the checkout process, including order creation and management.
-               And handles the logic for payment methods.
-4. **Accounts**: Handles user registration, login, and profile management. 
+## Apps and Their Responsibilities
+
+1. **Shop**:
+   - **Product Listings**: Manages and displays a comprehensive list of available artwork and categories. Users can browse through different art collections and view detailed information about each product.
+   - **Homepage**: Displays featured products and provides an introduction to the art gallery, setting the tone for the site’s artistic offerings.
+   - **Product Detail**: Shows detailed information about individual artwork pieces when a user selects a product.
+   - **About Us Page**: Provides information about the D&M Artistry team, their vision, and what they offer. This page helps users understand the mission and values of the gallery.
+   - **Contact Us Page**: Allows users to get in touch with the gallery for inquiries, support, or feedback. This page typically includes a contact form and relevant contact details.
+
+2. **Cart**:
+   - **Cart Management**: Handles the addition and removal of products from the shopping cart, allowing users to view and manage items they intend to purchase.
+
+3. **Orders**:
+   - **Checkout and Payment**: Manages the checkout process, including entering shipping details and processing payments. The Orders app integrates payment functionality directly within the checkout process to ensure a seamless transaction experience.
+   - **Order History**: Allows authenticated users to view their past orders and order details. Provides a comprehensive view of previous transactions.
+
+4. **Accounts**:
+   - **User Authentication**: Handles user login, registration, and profile management. Authenticated users can manage their accounts, view order history, and update their profile information.
+
 
 ## Routes Overview
 
@@ -74,15 +86,16 @@ This table provides a clear overview of the different routes and their purposes 
    pip install -r requirements.txt
 
 4. **Apply Migrations**
+   python manage.py makemigrations
    python manage.py migrate
 
-5. **Load Initial Data**
+6. **Load Initial Data**
    python manage.py import_data
 
-6. **Import Additional Data**
+7. **Import Additional Data**
    python manage.py load_data
 
-7. **Run the Development Server**
+8. **Run the Development Server**
    python manage.py runserver
 
 ## Usage Guide
@@ -94,8 +107,8 @@ Profile: If registered, view order history and manage account settings.
 
 ## Authors
 
-- **[Maha Kamal]** - *Full-Stack Developer* - (https://github.com/mahakamal-e)
-- **[Deena Kamal]** - *Full-Stack Developer* - (https://github.com/deenakamal)
+- **[Maha Kamal]** - *Full-Stack Developer* - [Github](https://github.com/mahakamal-e)
+- **[Deena Kamal]** - *Full-Stack Developer* - [Github](https://github.com/deenakamal)
 
 We worked together to build D&M Artistry, an online platform for showcasing and purchasing artwork. Our collaborative effort focused on creating a user-friendly e-commerce experience, implementing key features like product listings, shopping carts, and user profiles.
 
