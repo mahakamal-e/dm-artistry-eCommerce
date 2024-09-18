@@ -78,34 +78,38 @@ This table provides a clear overview of the different routes and their purposes 
    git clone https://github.com/yourusername/dm-artistry-eCommerce.git
    cd dm-artistry-eCommerce
 
- 
 2. **Activate the virtual environment**:
    ```bash
    python -m venv myenv
    source myenv/bin/activate
 
-4. **Install Dependencies**
+3. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
 
-6. **Apply Migrations**
+4. **Apply Migrations**
    ```bash
    python manage.py makemigrations
    python manage.py migrate
 
-8. **Load Initial Data**
+5. **Load Initial Data**
    ```bash
    python manage.py import_data
 
-10. **Import Additional Data**
+6. **Import Additional Data**
    ```bash
-   python manage.py load_data
+    python manage.py load_data
 
-12. **Run the Development Server**
+7. **Run the Development Server**
    ```bash
    python manage.py runserver
 
+8. **Access the site**
+   ```bash
+   Open http://127.0.0.1:8000 in your browser.
+
 ## Usage Guide
+
 Homepage: Browse featured products.
 Shop: Navigate through the available art categories and select products to view in detail.
 Cart: Add products to the cart, review them, and adjust quantities.
