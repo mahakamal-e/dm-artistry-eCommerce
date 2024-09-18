@@ -60,12 +60,8 @@ def contact_us(request):
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
-            
-            # Handle form data (e.g., save to database or send email)
-            
-            # Set success message to be displayed in the same template
             success_message = "Thank you for your message. We will get back to you soon."
-            form = ContactForm()  # Reinitialize form to clear data
+            form = ContactForm()
     else:
         form = ContactForm()
     
