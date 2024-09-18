@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from .forms import ContactForm
 import logging
 
-logger = logging.getLogger(__name__)
+
 
 def product_list(request):
     products = Product.objects.all()
