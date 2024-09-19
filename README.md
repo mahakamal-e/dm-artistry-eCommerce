@@ -106,11 +106,16 @@ Production: In production, we plan to switch to PostgreSQL, which offers more ro
    ```bash
     python manage.py load_data
 
-7. **Run the Development Server**
+7. **Run the Command load data**
+   The JSON file provides settings and design elements for the admin_interface Django app.
+   ```bash
+   python manage.py loaddata admin_interface_theme_uswds.json
+   
+8. **Run the Development Server**
    ```bash
    python manage.py runserver
 
-8. **Access the site**
+9. **Access the site**
    ```bash
    Open http://127.0.0.1:8000 in your browser.
 
