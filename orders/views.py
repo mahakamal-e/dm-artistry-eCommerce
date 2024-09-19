@@ -124,7 +124,7 @@ def checkout_anonymous(request):
         }
 
         # Clear cart items in session
-        request.session.pop('cart_items', None)
+        request.session.pop('cart', None)
 
         return redirect('order_confirmation', order_number=order.order_number)
 
