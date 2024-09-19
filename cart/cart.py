@@ -17,9 +17,11 @@ class Cart:
             self.cart[str(product_id)] = {
                 'product_id': product.id,
                 'name': product.name,
+                'artist': product.artist,
                 'price': str(product.price),
                 'quantity': quantity,
                 'image_url': product.image.url  # Add image URL
+                
                 }
     
         self.save()
@@ -54,5 +56,5 @@ class Cart:
 
     def clear(self):
         # Clear the cart items from the session
-        self.session.pop('cart_items', None)
+        self.session.pop('cart', None)
         self.session.modified = True

@@ -22,7 +22,7 @@
                 </div>
                 <div class="ms-3">
                     <p class="mb-1"><strong>{{ item.product.name|truncatewords:6 }}</strong></p>
-                    <p class="text-muted mb-0">Artist: {{ item.product.artist_name }}</p>
+                    <p class="text-muted mb-0">Artist: {{ item.product.artist}}</p>
                     <p class="text-muted mb-0">Shipping: Included</p>
                     <p class="text-muted mb-0">Quantity: {{ item.quantity }}</p> <!-- Display quantity -->
                     <p class="text-muted mb-0">Artwork Total: ${{ item.product.price }}</p>
