@@ -8,6 +8,7 @@
     align-items: flex-start;
     margin-top: 60px; /* Height of the fixed header */
     padding: 20px; /* Space around the container */
+    
   }
 
   .content-container {
@@ -17,6 +18,7 @@
     background: #f8f9fa; /* Light background for the content area */
     width: 100%;
     max-width: 1200px; /* Maximum width of the content container */
+    height: 100vh;
   }
 
   .split {
@@ -46,6 +48,7 @@
   .cart-container, .checkout-container {
     padding: 20px;
     border-radius: 8px;
+    height: 100hv;
   }
 
   .product-list {

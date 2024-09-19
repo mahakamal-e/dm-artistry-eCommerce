@@ -62,7 +62,7 @@
 <section class="categories">
     <h2>Explore Our Categories</h2>
     <div class="category-grid">
-        {% for category in categories|slice:":3" %}
+        {% for category in categories|slice:":4" %}
         <div class="category-item">
             <a href="{% url 'product_list' %}?category={{ category.id }}">
                 {% if category.image %}
@@ -90,7 +90,7 @@
             <img src="{% static 'images/events_img.png' %}" alt="New Events" class="event-image">
         </div>
         <!-- Button placed below the image -->
-        <a href="#" class="explore-events-btn">Explore Events</a>
+       
     </div>
 </section>
 
@@ -104,8 +104,8 @@
           Your browser does not support the video tag.
         </video>
       </div>
-      <a href="contact-me.html" class="contact-button">
-        <i class="fas fa-envelope icon"></i> Contact Us
+      <a href="{% url 'contact' %}" class="contact-button">
+        <i class="fas fa-envelope icon"></i> Contact
       </a>
     </div>
   </section>

@@ -12,8 +12,10 @@ body {
 
 .product-container {
     max-width: 1200px;
+ 
     margin: 0 auto;
     padding: 0 15px;
+    height: 100vh;
 }
 
 /* Grid Layout */
@@ -36,6 +38,7 @@ body {
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    
 }
 
 .product-image {
@@ -143,6 +146,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+   
 }
 
 /* Label Style */

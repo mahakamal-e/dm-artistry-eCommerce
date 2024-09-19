@@ -1,5 +1,6 @@
 # Ignore the virtual environment directory
 venv/
+myenv/
 
 # Ignore Django migration files
 *.pyc

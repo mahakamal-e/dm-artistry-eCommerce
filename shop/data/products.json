@@ -4,7 +4,7 @@
         "description": "Abstract painting.",
         "price": "170.00",
         "image": "abstract1.jpeg",
-        "stock": 1,
+        "stock": 3,
         "category": 3,
         "artist": "Deena Kamal"
     },
@@ -13,7 +13,7 @@
         "description": "Landscape painting.",
         "price": "180.00",
         "image": "land_scape2.png",
-        "stock": 1,
+        "stock": 3,
         "category": 1,
         "artist": "Deena Kamal"
     },
@@ -23,7 +23,7 @@
         "description": "Landscape painting.",
         "price": "160.00",
         "image": "land_scape3.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 1,
         "artist": "Maha Kamal"
     },
@@ -32,7 +32,7 @@
         "description": "Portrait painting.",
         "price": "250.00",
         "image": "portrait1.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 2,
         "artist": "Deena Kamal"
     },
@@ -41,7 +41,7 @@
         "description": "Landscape painting.",
         "price": "150.00",
         "image": "land_scape1.png",
-        "stock": 1,
+        "stock": 3,
         "category": 1,
         "artist": "Deena Kamal"
         
@@ -52,7 +52,7 @@
         "description": "Portrait painting.",
         "price": "300.00",
         "image": "portrait2.jpeg",
-        "stock": 1,
+        "stock": 3,
         "category": 2,
         "artist": "Maha Kamal"
     },
@@ -61,7 +61,7 @@
         "description": "Portrait painting.",
         "price": "280.00",
         "image": "portrait3.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 2,
         "artist": "Maha Kamal"
     },
@@ -70,7 +70,7 @@
         "description": "Portrait painting.",
         "price": "290.00",
         "image": "portrait4.JPG",
-        "stock": 1,
+        "stock": 3,
         "category": 2,
         "artist": "Deena Kamal"
     },
@@ -79,7 +79,7 @@
         "description": "Portrait painting.",
         "price": "290.00",
         "image": "portrait5.JPG",
-        "stock": 1,
+        "stock": 3,
         "category": 2,
         "artist": "Maha Kamal"
     },
@@ -89,7 +89,7 @@
         "description": "Abstract painting.",
         "price": "190.00",
         "image": "abstract2.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 3,
         "artist": "Deena Kamal"
     },
@@ -98,7 +98,7 @@
         "description": "Abstract painting.",
         "price": "190.00",
         "image": "abstract3.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 3,
         "artist": "Deena Kamal"
     },
@@ -107,7 +107,7 @@
         "description": "Abstract painting.",
         "price": "190.00",
         "image": "abstract4.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 3,
         "artist": "Deena Kamal"
     },
@@ -116,7 +116,7 @@
         "description": "Still life painting.",
         "price": "140.00",
         "image": "still_life1.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 4,
         "artist": "Maha Kamal"
     },
@@ -125,7 +125,7 @@
         "description": "Still life painting.",
         "price": "150.00",
         "image": "still_life2.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 4,
         "artist": "Maha Kamal"
     },
@@ -134,10 +134,45 @@
         "description": "Still life painting.",
         "price": "160.00",
         "image": "still_life3.jpg",
-        "stock": 1,
+        "stock": 3,
         "category": 4,
         "artist": "Maha Kamal"
+    },
+    {
+        "name": "The Countryside",
+        "description": "Landscape painting.",
+        "price": "160.00",
+        "image": "land_scape6.jpg",
+        "stock": 3,
+        "category": 1,
+        "artist": "Deena Kamal"
+    },
+    {
+        "name": "Pour Colors",
+        "description": "Abstract painting.",
+        "price": "160.00",
+        "image": "abstract_7.png",
+        "stock": 3,
+        "category": 3,
+        "artist": "Maha Kamal"
+    },
+    {
+        "name": "Colors",
+        "description": "Abstract painting.",
+        "price": "160.00",
+        "image": "abstract_8.png",
+        "stock": 3,
+        "category": 3,
+        "artist": "Maha Kamal"
+    },
+    {
+        "name": "African woman",
+        "description": "Portrait painting.",
+        "price": "160.00",
+        "image": "portrrait_8.jpg",
+        "stock": 3,
+        "category": 2,
+        "artist": "Maha Kamal"
     }
+
 ]
-
-

@@ -2,6 +2,8 @@
 .profile-container {
     display: flex;
     margin: 20px;
+    height: 100hv;
+    
 }
 
 .profile-sidebar {
@@ -201,3 +203,7 @@
     background: #0056b3;
 }
 
+#order-history {
+    height: 100vh; /* 100% of the viewport height */
+    overflow: auto; /* Optional: adds scrollbars if content overflows */
+}
