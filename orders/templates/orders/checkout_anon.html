@@ -84,7 +84,7 @@
               {% for item in cart_items %}
               <div class="d-flex align-items-center mb-4">
                 <div class="cart-image" style="width: 80px;">
-                  <img src="{{ item.product.image_url }}" class="img-fluid" alt="{{ item.product.name }}">
+                  <img src="{{ item.image_url }}" class="img-fluid" alt="{{ item.name }}">
                 </div>
                 <div class="ms-3">
                   <p class="mb-1"><strong>{{ item.name }} x {{ item.quantity }}</strong></p>

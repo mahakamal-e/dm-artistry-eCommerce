@@ -7,7 +7,11 @@ from accounts.models import UserProfile
 from cart.cart import Cart
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
+import logging
+from django.contrib import messages
 
+
+logger = logging.getLogger(__name__)
 
 @login_required
 def checkout(request):
@@ -120,10 +124,9 @@ def checkout_anonymous(request):
         }
 
         # Clear cart items in session
-        request.session.pop('cart_items', [])
+        request.session.pop('cart', None)
 
-        return redirect('order_confirmation',
-                        order_number=order.order_number)
+        return redirect('order_confirmation', order_number=order.order_number)
 
     # If GET request, render checkout page
     cart = Cart(request)
@@ -145,11 +148,12 @@ def checkout_anonymous(request):
 
 
 def order_confirmation(request, order_number):
-    order = None
     session_order = request.session.get('session_order')
 
     if session_order:
-        # If order data is available in session (anonymous users)
+        # Ensure session_order is a dictionary
+        if not isinstance(session_order, dict):
+            return HttpResponse("Session data is corrupted", status=500)
         return render(request, 'orders/order_confirmation.html', {
             'session_order': session_order
         })
