@@ -18,9 +18,24 @@
             {% endfor %}
         </select>
     </form>
+     <!-- Price Range Filter -->
+   <!-- Price Range Filter -->
+   <form method="get" action="" style="display: inline;">
+    <label for="price_range">Filter by Price Range:</label>
+    <select id="price_range" name="price_range" onchange="this.form.submit()">
+        <option value="">All Prices</option>
+        {% for label, price_range in price_ranges %}
+        <option value="{{ label|slugify }}" 
+                {% if label == selected_price_range %}selected{% endif %}>
+            {{ label }} 
+          
+        </option>
+    {% endfor %}
+    </select>
+</form>
 
     <!-- Button to remove filter -->
-    {% if request.GET.category %}
+    {% if request.GET.category or selected_price_range %}
         <form method="get" action="" style="display:inline;">
             <button type="submit" class="remove-filter-button">Remove Filter</button>
         </form>
