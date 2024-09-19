@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block content %}
+<title>Order Confirmation - D&M Artistry</title>
+
+
 <head><link rel="stylesheet" href="{% static 'css/order_page.css' %}"></head>
 <div class="order-confirmation-page">
     <div class="order-confirmation-container">
@@ -16,8 +19,8 @@
             <p><strong>Shipping Address:</strong></p>
             <p>{{ session_order.address_line1 }}
                {{ session_order.address_line2 }}
-               {{ session_order.city }}, {{ session_order.state }}
-               {{ session_order.postal_code }}<br>
+                {{ session_order.state }}
+               {{ session_order.postcode }}<br>
                {{ session_order.country }}</p>
             <p><strong>Estimated Delivery:</strong> 2 to 4 business days</p>
             {% else %}
@@ -27,7 +30,7 @@
             <p><strong>Shipping Address:</strong></p>
             <p>{{ order.address_line1 }}
                {{ order.address_line2 }}
-               {{ order.city }}, {{ order.state }}
+                {{ order.state }}
                {{ order.postcode }}<br>
                {{ order.country }}</p>
             <p><strong>Estimated Delivery:</strong> 2 to 4 business days</p>
