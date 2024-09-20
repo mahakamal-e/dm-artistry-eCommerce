@@ -7,8 +7,8 @@ from accounts.models import UserProfile
 from cart.cart import Cart
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
+from shop.models import Product
 
-from django.contrib import messages
 
 
 
@@ -35,6 +35,9 @@ def checkout(request):
         # Create the order
         order = Order(
             user=request.user,
+            first_name=request.user.first_name or '',
+            last_name=request.user.last_name or '',
+            email=request.user.email or '',
             phone_number=phone_number,
             address_line1=address_line1,
             address_line2=address_line2,
@@ -42,9 +45,7 @@ def checkout(request):
             state=state,
             country=country,
             payment_method=payment_method,
-            first_name=request.user.first_name or '',
-            last_name=request.user.last_name or '',
-            email=request.user.email or ''
+
         )
         order.save()  # Save the order to generate and save the order number
 
@@ -85,17 +86,19 @@ def checkout(request):
 
 def checkout_anonymous(request):
     if request.method == 'POST':
+        first_name = request.POST.get('first_name', '')
+        last_name = request.POST.get('last_name', '')
+        email = request.POST.get('email', '')
         phone_number = request.POST.get('phone_number', '')
         address_line1 = request.POST.get('address_line1', '')
         address_line2 = request.POST.get('address_line2', '')
         postcode = request.POST.get('postcode', '')
         state = request.POST.get('state', '')
         country = request.POST.get('country', '')
+        
         payment_method_value = request.POST.get('payment_method')
 
-        # Get the PaymentMethod instance from the value
         payment_method = PaymentMethod.objects.filter(name=payment_method_value).first()
-
         if not payment_method:
             return HttpResponse("Invalid payment method", status=400)
 
@@ -107,20 +110,28 @@ def checkout_anonymous(request):
             postcode=postcode,
             state=state,
             country=country,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
             payment_method=payment_method,
         )
         order.save()
 
-        # Save the order info in the session
-        request.session['session_order'] = {
-            'order_number': order.order_number,
-            'payment_method': order.payment_method.name,  # Store the name for display
-            'address_line1': order.address_line1,
-            'address_line2': order.address_line2,
-            'state': order.state,
-            'postcode': order.postcode,
-            'country': order.country
-        }
+        # Retrieve cart items from the session or cart class
+        cart = Cart(request)  # Assuming you have a Cart class to manage cart items
+        cart_items = cart.get_items()  # Retrieve cart items
+
+        for item in cart_items:
+            # Ensure you're correctly accessing the product object
+            product_id = item.get('product_id')  # Assuming product is stored as ID in the cart
+            product = Product.objects.filter(id=product_id).first()  # Fetch the Product instance
+            if product:  # Check if the product exists
+                OrderItem.objects.create(
+                    order=order,
+                    product=product,
+                    quantity=item.get('quantity', 1),  # Default to 1 if not specified
+                    price=product.price  # Use product's price
+                )
 
         # Clear cart items in session
         request.session.pop('cart', None)
@@ -161,5 +172,7 @@ def order_confirmation(request, order_number):
         # If logged-in user (retrieve order from the database)
         order = get_object_or_404(Order, order_number=order_number)
         return render(request, 'orders/order_confirmation.html', {
-            'order': order
+            'order': order,
+            'order_items': order.items.all()  # Access related OrderItems
+            
         })
