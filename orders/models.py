@@ -6,24 +6,20 @@ from django.utils import timezone
 
 class Order(models.Model):
     """Represents an order placed by a user or a customer"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True,
-                             null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    first_name = models.CharField(max_length=50, default='')  
+    last_name = models.CharField(max_length=50, default='')
+    email = models.EmailField(null=True, blank=True)
     phone_number = models.CharField(max_length=20)
     address_line1 = models.CharField(max_length=255)
     address_line2 = models.CharField(max_length=255, blank=True, null=True)
     postcode = models.CharField(max_length=20)
     state = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=50, default='')  
-    last_name = models.CharField(max_length=50, default='')
-    email = models.EmailField(null=True, blank=True)
-    order_number = models.CharField(max_length=10, blank=True,
-                                    unique=True, editable=False)
+    order_number = models.CharField(max_length=10, blank=True, unique=True, editable=False)
     created_at = models.DateTimeField(default=timezone.now)
-    payment_method = models.ForeignKey('PaymentMethod',
-                                       on_delete=models.SET_NULL,
-                                       null=True, blank=True)
-    
+    payment_method = models.ForeignKey('PaymentMethod', on_delete=models.SET_NULL, null=True, blank=True)
+
     def save(self, *args, **kwargs):
         """
         Override the save method to generate an order number if it is not set
