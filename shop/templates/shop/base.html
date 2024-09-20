@@ -51,20 +51,6 @@
                     <li><a href="{% url 'register' %}">Register</a></li>
                 {% endif %}
 
-                <!-- Favorite Icon with Count 
-                <li class="favorite-logo">
-                    <a href="#">
-                        <img src="{% static 'images/favorite_icon1.png' %}" alt="Favorite">
-                        <span class="count-badge">
-                            {% if user.is_authenticated %}
-                                {{ user.favorite_items.count|default:0 }}
-                            {% else %}
-                                0
-                            {% endif %}
-                        </span>
-                    </a>
-                </li>-->
-
                 <!-- Cart Icon with Count -->
                <li class="cart-logo">
                 {% if user.is_authenticated %}
