@@ -18,7 +18,7 @@ def product_list(request):
         'under-1000': (0, 1000),
         '1000-1500': (1000, 1500),
         '1500-2000': (1500, 2000),
-        'over-2000': (2000, 1e6)  # Use a high value here
+        '2000-over': (2000, 3000)
     }
 
     if price_filter:
@@ -48,24 +48,23 @@ def product_list(request):
 
     # Flag to check if no products were found
     no_products_found = not products.exists()
-
-    return render(request, 'shop/product_list.html', {
-        'products': page_obj,
+    
+    context = {
+         'products': page_obj,
         'categories': categories,
         'page_obj': page_obj,
         'price_ranges': price_ranges,
         'selected_price_range': price_filter,
-        'no_products_found': no_products_found,  # Pass flag to template
-    })
+        'no_products_found': no_products_found,
+    }
 
-
-
-
+    return render(request, 'shop/product_list.html', context)
 
 
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
     return render(request, 'shop/product_detail.html', {'product': product})
+
 
 def home_view(request):
     categories = Category.objects.all()
@@ -78,7 +77,6 @@ def home_view(request):
 
 def about(request):
     return render(request, 'shop/about.html')
-
 
 
 def contact_us(request):
