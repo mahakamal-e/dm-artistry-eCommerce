@@ -9,7 +9,9 @@ body {
 .product-details p {
     text-align: justify;
 }
-
+.spacing {
+    margin: 20px 0; /* Adjust the value for more or less space */
+}
 .product-container {
     max-width: 1200px;
  

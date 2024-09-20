@@ -14,17 +14,22 @@ def product_list(request):
 
     # Filtering by price range
     price_filter = request.GET.get('price_range')
-    price_ranges = [
-        ('under-1000', (0, 1000)),
-        ('1000-1500', (1000, 1500)),
-        ('1500-2000', (1500, 2000)),
-        ('over-2000', (2000, float('inf'))),
-    ]
+    price_ranges = {
+        'under-1000': (0, 1000),
+        '1000-1500': (1000, 1500),
+        '1500-2000': (1500, 2000),
+        'over-2000': (2000, 1e6)  # Use a high value here
+    }
 
     if price_filter:
-        for label, (min_price, max_price) in price_ranges:
-            if price_filter == label.replace(' ', '-') or price_filter == label:
+        if price_filter in price_ranges:
+            min_price, max_price = price_ranges[price_filter]
+            if max_price == 1e6:
+                products = products.filter(price__gte=min_price)  # No upper limit
+            else:
                 products = products.filter(price__gte=min_price, price__lt=max_price)
+        else:
+            products = products.none()  # No products if the filter is invalid
 
     # Sorting by price (asc or desc)
     sort_by = request.GET.get('sort', 'name')
@@ -41,13 +46,20 @@ def product_list(request):
     # Fetch all categories for the filter dropdown
     categories = Category.objects.all()
 
+    # Flag to check if no products were found
+    no_products_found = not products.exists()
+
     return render(request, 'shop/product_list.html', {
         'products': page_obj,
         'categories': categories,
         'page_obj': page_obj,
         'price_ranges': price_ranges,
         'selected_price_range': price_filter,
+        'no_products_found': no_products_found,  # Pass flag to template
     })
+
+
+
 
 
 
