@@ -7,11 +7,10 @@ from accounts.models import UserProfile
 from cart.cart import Cart
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
-import logging
+
 from django.contrib import messages
 
 
-logger = logging.getLogger(__name__)
 
 @login_required
 def checkout(request):
