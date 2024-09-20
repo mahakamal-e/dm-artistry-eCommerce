@@ -44,6 +44,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.UsernameOrEmailBackend',  # Your custom backend
+    'django.contrib.auth.backends.ModelBackend',      # Default backend
+]
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 ROOT_URLCONF = 'DMArtistry.urls'
