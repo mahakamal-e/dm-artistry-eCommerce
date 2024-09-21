@@ -2,7 +2,9 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding-bottom: 100px;
+    height: 100vh;
+    
 }
 
 /* Align text under the image */
@@ -14,10 +16,9 @@ body {
 }
 .product-container {
     max-width: 1200px;
- 
     margin: 0 auto;
     padding: 0 15px;
-    height: 100vh;
+   
 }
 
 /* Grid Layout */
