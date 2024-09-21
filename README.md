@@ -111,15 +111,19 @@ Production: In production, we plan to switch to PostgreSQL, which offers more ro
    ```bash
    python manage.py loaddata admin_interface_theme_uswds.json
    
-8. **Run the Development Server**
+8. **Create a Superuser**
+   ```bash
+   python manage.py createsuperuser
+   
+9. **Run the Development Server**
    ```bash
    python manage.py runserver
 
-9. **Access the site**
-   ```bash
+10. **Access the site**
+    ```bash
    Open http://127.0.0.1:8000 in your browser.
 
-## Usage Guide
+##  Usage Guide
 
 Homepage: Browse featured products. <br />
 Shop: Navigate through the available art categories and select products to view in detail. <br \>
