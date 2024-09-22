@@ -1,0 +1,51 @@
+/* Order Detail Page Styles */
+.order-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-detail h2 {
+    text-align: center;
+    color: #333;
+}
+
+.order-detail p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.order-detail ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-detail ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-detail ul li img {
+    margin-right: 10px;
+    border-radius: 4px;
+    max-width: 50px;
+    height: auto;
+}
+
+.order-detail strong {
+    color: #222;
+}
+
+.order-detail .total-price {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: right;
+    color: #007bff; /* Bootstrap primary color */
+}
