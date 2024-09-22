@@ -8,8 +8,7 @@ from cart.cart import Cart
 from django.http import HttpResponse
 from django.http import HttpResponseBadRequest
 from shop.models import Product
-
-
+from django.db.models import Sum
 
 
 @login_required
@@ -176,3 +175,15 @@ def order_confirmation(request, order_number):
             'order_items': order.items.all()  # Access related OrderItems
             
         })
+        
+
+
+def order_detail(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+    order_items = order.items.all()
+    total_price = order_items.aggregate(total=Sum('price'))['total'] or 0
+    return render(request, 'orders/order_detail.html', {
+        'order': order,
+        'order_items': order_items,
+        'total_price': total_price
+    })
