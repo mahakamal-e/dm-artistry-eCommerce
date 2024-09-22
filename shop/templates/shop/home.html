@@ -3,8 +3,6 @@
 {% block title %}Home - D&M Artistry{% endblock %}
 
 {% block content %}
-<!-- Carousel Section -->
- 
 <section class="carousel">
     <div class="carousel-container">
         <!-- Slide 1: September discount -->
@@ -13,7 +11,11 @@
             <div class="carousel-text">
                 <h1>To look at art is to fall in love</h1>
                 <h6>Paul Gauguin</h6>
-                <a href="{% url 'register' %}" class="shop-now">Sign Up Now</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="shop-now">My Profile</a>
+                {% else %}
+                    <a href="{% url 'register' %}" class="shop-now">Sign Up Now</a>
+                {% endif %}
             </div>
         </div>
         <!-- Slide 2: Discover Artworks -->

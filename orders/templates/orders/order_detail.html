@@ -1,0 +1,37 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/order_detail.css' %}">
+<div class="order-detail">
+    <h2>Order Details</h2>
+    {% if order %}
+        <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+        <p><strong>Date:</strong> {{ order.created_at|date:"F j, Y" }}</p>
+        <p><strong>Name:</strong> {{ order.first_name }} {{ order.last_name }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p><strong>Phone:</strong> {{ order.phone_number }}</p>
+        <p><strong>Shipping Address:</strong><br>
+            {{ order.address_line1 }}<br>
+            {% if order.address_line2 %}{{ order.address_line2 }}<br>{% endif %}
+            {{ order.city }}, {{ order.state }} {{ order.postcode }}, {{ order.country }}
+        </p>
+
+        <h3>Order Items:</h3>
+        <ul>
+            {% for item in order_items %}
+                <li>
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="max-width: 80px; max-height: 80px;">
+
+                    {{ item.product.name }} (Quantity: {{ item.quantity }}) - Price: ${{ item.price }}
+                </li>
+            {% empty %}
+                <li>No items in this order.</li>
+            {% endfor %}
+        </ul>
+
+        <p class="total-price"><strong>Total Price:</strong> ${{ total_price }}</p>
+    {% else %}
+        <p>No order found.</p>
+    {% endif %}
+</div>
+{% endblock %}
