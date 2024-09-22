@@ -100,7 +100,7 @@
                 <ul>
                     {% for order in orders %}
                         <li>
-                            <a href="{% url 'order_confirmation' order_number=order.order_number %}">
+                            <a href="{% url 'order_detail' order_number=order.order_number %}">
                                 Order {{ order.order_number }} - {{ order.created_at|date:"F j, Y" }}
                             </a>
                         </li>
